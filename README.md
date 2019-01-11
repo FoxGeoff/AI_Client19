@@ -1,4 +1,4 @@
-# Angularmaterial
+# AI_client19 (from angularmaterial)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.
 
@@ -366,3 +366,11 @@ constructor( iconRegisty: MatIconRegistry, sanitizer: DomSanitizer) {
 
 ## Check: Save Contact
 * Code: new-contact-dialog.component
+***
+#    AI_Client Project - Work Log
+
+## Check: Add Customer Manager layout components with their module
+
+
+
+ 
