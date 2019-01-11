@@ -371,6 +371,8 @@ constructor( iconRegisty: MatIconRegistry, sanitizer: DomSanitizer) {
 
 ## Check: Add Customer Manager layout components with their module
 
+## Check:  Add to app.module lazyloading of contactmanager module.
+
 
 
  
