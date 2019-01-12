@@ -1,1 +1,22 @@
+<mat-toolbar color="primary" class.mat-elevation-z8>
+    <span>{{title}}</span>
+    <button mat-icon-button matTooltip="dashboard">
+        <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="contacts">
+        <mat-icon>person</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="customers">
+        <mat-icon>people_outine</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="invoices">
+        <mat-icon>money</mat-icon>
+    </button>
+    <!-- This fills the remaining space of the current row -->
+    <span class="example-fill-remaining-space"></span>
+    <button mat-button>
+        <mat-icon>input</mat-icon> login
+    </button>
+</mat-toolbar>
+
 <router-outlet></router-outlet>

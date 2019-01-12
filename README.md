@@ -373,6 +373,8 @@ constructor( iconRegisty: MatIconRegistry, sanitizer: DomSanitizer) {
 
 ## Check:  Add to app.module lazyloading of contactmanager module.
 
+## NOTE: To get <mat-icon> https://material.io/tools/icons/?style=baseline
+
 
 
  
