@@ -1,0 +1,13 @@
+/*
+ https://blog.angularindepth.com/angular-flex-layout-flexbox-and-grid-layout-for-angular-component-6e7c24457b63
+ */
+ 
+.example-card {
+    max-width: 400px;
+    margin: 5px;
+  }
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
