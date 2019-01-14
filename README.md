@@ -379,6 +379,8 @@ constructor( iconRegisty: MatIconRegistry, sanitizer: DomSanitizer) {
 
 ## Check: Configure Sidenav 'toolbar'
 
+## Check: Add customer name data list
+
 
 
  

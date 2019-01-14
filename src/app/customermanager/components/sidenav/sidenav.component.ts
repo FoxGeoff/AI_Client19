@@ -33,7 +33,7 @@ export class SidenavComponent implements OnInit {
         }
       });
 
-    /*
+    
     // display user list from the internal store
     this.users = this.userService.users;
     this.userService.LoadAll();
@@ -41,7 +41,7 @@ export class SidenavComponent implements OnInit {
     this.users.subscribe(data => {
       console.log(data);
     })
-    */
+    
 
     this.router.events.subscribe(() => {
       if (this.smallWidthBreakpoint) {
