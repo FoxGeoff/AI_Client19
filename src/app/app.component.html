@@ -1,15 +1,15 @@
 <mat-toolbar color="primary" [class.mat-elevation-z8]="true">
     <span>{{title}}</span>
-    <button mat-icon-button matTooltip="Dashboard">
+    <button mat-icon-button matTooltip="Dashboard" [routerLink]="['']">
         <mat-icon>home</mat-icon>
     </button>
-    <button mat-icon-button matTooltip="Contact Manager">
+    <button mat-icon-button matTooltip="Contact Manager" [routerLink]="['/contactmanager']">
         <mat-icon>person</mat-icon>
     </button>
-    <button mat-icon-button matTooltip="Customer Manager">
+    <button mat-icon-button matTooltip="Customer Manager" [routerLink]="['/customermanager']">
         <mat-icon>people_outine</mat-icon>
     </button>
-    <button mat-icon-button matTooltip="Invoices Manager">
+    <button mat-icon-button matTooltip="Invoices Manager" [routerLink]="['/invoicemanager']">
         <mat-icon>money</mat-icon>
     </button>
     <!-- This fills the remaining space of the current row -->
