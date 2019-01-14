@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MainContentComponent } from './components/main-content/main-content.component';
-import { SidnavComponent } from './components/sidnav/sidnav.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { CustomermanagerAppComponent } from './customermanager-app.component';
 import { MaterialModule } from '../shared/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -35,6 +35,6 @@ const routes: Routes = [
   providers: [
     UserService,
   ],
-  declarations: [CustomermanagerAppComponent, ToolbarComponent, MainContentComponent, SidnavComponent, CustomermanagerAppComponent],
+  declarations: [CustomermanagerAppComponent, ToolbarComponent, MainContentComponent, SidenavComponent, CustomermanagerAppComponent],
 })
 export class CustomermanagerModule { }

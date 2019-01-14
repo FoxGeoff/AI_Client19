@@ -375,6 +375,10 @@ constructor( iconRegisty: MatIconRegistry, sanitizer: DomSanitizer) {
 
 ## NOTE: To get <mat-icon> https://material.io/tools/icons/?style=baseline
 
+## Check: Configure Sidenav 'slide draw'
+
+## Check:
+
 
 
  
