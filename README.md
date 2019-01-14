@@ -377,7 +377,7 @@ constructor( iconRegisty: MatIconRegistry, sanitizer: DomSanitizer) {
 
 ## Check: Configure Sidenav 'slide draw'
 
-## Check:
+## Check: Configure Sidenav 'toolbar'
 
 
 
