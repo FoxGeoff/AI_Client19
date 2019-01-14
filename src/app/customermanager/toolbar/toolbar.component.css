@@ -1,0 +1,28 @@
+.sidenav-toggle {
+    display: none;
+    
+    padding: 0;
+    margin: 8px;
+    min-width: 56px;
+}
+@media (max-width: 500px) {
+    .sidenav-toggle{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }   
+}
+
+.mat-icon {
+    font-size: 30px;
+    height: 56px;
+    width: 56px;
+    line-height: 56px;
+    color: white;
+}
+
+.fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+}

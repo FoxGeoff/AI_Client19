@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { NewCustomerDialogComponent } from '../components/new-customer-dialog/new-customer-dialog.component';
 
 @Component({
   selector: 'app-toolbar',
@@ -15,14 +16,13 @@ export class ToolbarComponent implements OnInit {
   ngOnInit() {
   }
 
-  /*
-  openAddContactDialog(): void {
-    let dialogRef = this.dialog.open(NewContactDialogComponent,
+  openAddCustomerDialog(): void {
+    let dialogRef = this.dialog.open(NewCustomerDialogComponent,
       { width: '450px' });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dailod is closed', result);
+      console.log('Dailog "New Customer" is closed', result);
     }) 
-  } */
+  } 
 
 }

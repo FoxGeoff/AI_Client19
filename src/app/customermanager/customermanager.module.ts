@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from '../contactmanager/services/user.service';
+import { NewCustomerDialogComponent } from './components/new-customer-dialog/new-customer-dialog.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,6 @@ const routes: Routes = [
   providers: [
     UserService,
   ],
-  declarations: [CustomermanagerAppComponent, ToolbarComponent, MainContentComponent, SidenavComponent, CustomermanagerAppComponent],
+  declarations: [CustomermanagerAppComponent, ToolbarComponent, MainContentComponent, SidenavComponent, CustomermanagerAppComponent, NewCustomerDialogComponent],
 })
 export class CustomermanagerModule { }
