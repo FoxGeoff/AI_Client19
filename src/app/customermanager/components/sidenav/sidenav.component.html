@@ -5,7 +5,7 @@
  
       <mat-nav-list>
         <mat-list-item *ngFor="let user of customers | async">
-          <a matLine [routerLink]="['/contactmanager', user.id]">
+          <a matLine [routerLink]="['/customermanager', user.id]">
             <mat-icon>people</mat-icon> {{ user.username }}
           </a>
         </mat-list-item>
