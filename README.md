@@ -386,6 +386,8 @@ constructor( iconRegisty: MatIconRegistry, sanitizer: DomSanitizer) {
 
 ## Check: Add httpclient under folder app/core
 
+## Check: Add api read all customers
+
 
 
 

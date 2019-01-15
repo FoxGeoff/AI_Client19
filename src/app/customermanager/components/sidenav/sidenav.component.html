@@ -4,9 +4,9 @@
     <mat-toolbar color="primary">My Customers</mat-toolbar>
  
       <mat-nav-list>
-        <mat-list-item *ngFor="let user of users | async">
+        <mat-list-item *ngFor="let user of customers | async">
           <a matLine [routerLink]="['/contactmanager', user.id]">
-            <mat-icon>people</mat-icon> {{ user.name }}
+            <mat-icon>people</mat-icon> {{ user.username }}
           </a>
         </mat-list-item>
       </mat-nav-list>

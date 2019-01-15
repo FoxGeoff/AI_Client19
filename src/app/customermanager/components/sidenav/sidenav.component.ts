@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { MatDrawer } from '@angular/material/sidenav';
 
-import { UserService } from 'src/app/contactmanager/services/user.service';
-import { User } from 'src/app/contactmanager/models/user';
+import { UserService } from '../../services/user.service';
+import { Customer } from '../../models/customer';
 
 @Component({
   selector: 'app-sidenav',
@@ -14,10 +14,10 @@ import { User } from 'src/app/contactmanager/models/user';
 })
 export class SidenavComponent implements OnInit {
   smallWidthBreakpoint: boolean;
-  users: Observable<User[]>;
+  customers: Observable<Customer[]>;
   @ViewChild(MatDrawer) sidenav: MatDrawer;
 
-  constructor(public breakpointObserver: BreakpointObserver, private userService: UserService, private router: Router) { }
+  constructor(public breakpointObserver: BreakpointObserver, private customerService: UserService, private router: Router) { }
 
   ngOnInit() {
     // make layout responsive
@@ -35,10 +35,10 @@ export class SidenavComponent implements OnInit {
 
 
     // display user list from the internal store
-    this.users = this.userService.users;
-    this.userService.LoadAll();
+    this.customers = this.customerService.users;
+    this.customerService.LoadAll();
 
-    this.users.subscribe(data => {
+    this.customers.subscribe(data => {
       console.log(data);
     })
 
