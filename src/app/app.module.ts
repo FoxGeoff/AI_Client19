@@ -8,6 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from './shared/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CoreModule } from './core/core.module';
 
 
 const routes: Routes = [
@@ -30,6 +31,7 @@ const routes: Routes = [
     HttpClientModule,
     MaterialModule,
     FlexLayoutModule,
+    CoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

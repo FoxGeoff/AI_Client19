@@ -381,6 +381,12 @@ constructor( iconRegisty: MatIconRegistry, sanitizer: DomSanitizer) {
 
 ## Check: Add customer name data list
 
+* Ref. project: C:\Users\geoff\GitHub\booktracker_ver1 
+* (https://github.com/FoxGeoff/booktracker/tree/370b5c3b894a2c60cd0b5099171bdfcd1d40a8cc)
+
+## Add httpclient under folder app/core:
+
+
 
 
  
