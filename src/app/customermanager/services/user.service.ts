@@ -48,9 +48,9 @@ export class UserService {
         // Copy data obj to isolate the data from manipulation
         // and expose this data
         this._users.next(Object.assign({}, this.dataStore).users);
-        console.log("got customer data");
+        console.log("Got customer data");
       }, error => {
-        console.error("Failed to fetch data");
+        console.error("Failed to fetch customer data");
       }
       )
   }
