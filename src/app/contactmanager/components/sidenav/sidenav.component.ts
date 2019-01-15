@@ -4,7 +4,7 @@ import { UserService } from '../../services/user.service';
 import { Observable } from 'rxjs';
 import { User } from '../../models/user';
 import { Router } from '@angular/router';
-import { MatSidenav, MatDrawer } from '@angular/material/sidenav';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-sidenav',
@@ -34,7 +34,7 @@ export class SidenavComponent implements OnInit {
     // display user list from the internal store
     this.users = this.userService.users;
     this.userService.LoadAll();
-    
+
     this.users.subscribe(data => {
       console.log(data);
     })
