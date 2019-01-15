@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Customer } from '../../models/customer';
 import { ActivatedRoute } from '@angular/router';
-import { UserService } from '../../services/user.service';
+import { CustomerService } from '../../services/cutomer.service';
  
 @Component({
   selector: 'app-main-content',
@@ -11,7 +11,7 @@ import { UserService } from '../../services/user.service';
 export class MainContentComponent implements OnInit {
   customer: Customer;
 
-  constructor(private route: ActivatedRoute, private service: UserService) { }
+  constructor(private route: ActivatedRoute, private service: CustomerService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {

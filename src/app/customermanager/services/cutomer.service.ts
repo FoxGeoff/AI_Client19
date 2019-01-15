@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class CustomerService {
   // this is our local internal store
   // not accessable to external code that could manipulate
   // the data

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { MatDrawer } from '@angular/material/sidenav';
 
-import { UserService } from '../../services/user.service';
+import { CustomerService } from '../../services/cutomer.service';
 import { Customer } from '../../models/customer';
 
 @Component({
@@ -17,7 +17,7 @@ export class SidenavComponent implements OnInit {
   customers: Observable<Customer[]>;
   @ViewChild(MatDrawer) sidenav: MatDrawer;
 
-  constructor(public breakpointObserver: BreakpointObserver, private customerService: UserService, private router: Router) { }
+  constructor(public breakpointObserver: BreakpointObserver, private customerService: CustomerService, private router: Router) { }
 
   ngOnInit() {
     // make layout responsive
