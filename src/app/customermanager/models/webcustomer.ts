@@ -6,5 +6,6 @@ export class Customer {
     address: string;
     city: string;
     state: string;
+    // format with <br/>
     notes: string;
 }

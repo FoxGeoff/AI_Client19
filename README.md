@@ -388,6 +388,20 @@ constructor( iconRegisty: MatIconRegistry, sanitizer: DomSanitizer) {
 
 ## Check: Add api read all customers
 
+## Check: Add ReplaceLineBreaks pipe
+
+* Ref: https://stackoverflow.com/questions/41563283/how-to-replace-string-in-angular-2#41564496
+```
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({name: 'replaceLineBreaks'})
+export class ReplaceLineBreaks implements PipeTransform {
+  transform(value: string): string {
+    return value.replace(/\n/g, '<br/>');
+  }
+}
+```
+
 
 
 

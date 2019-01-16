@@ -27,5 +27,9 @@
   </mat-card>
 </div>
 <mat-card>
-  <h1>Main Content</h1>
+  <div *ngIf='customer'>
+    <h1>Main Content</h1>
+    <p> Name: {{customer.firstname}} {{customer.lastname}}</p>
+    <p> Address: {{customer.address}},{{customer.city}}, {{customer.state}} {{customer.zipCode}} </p>
+  </div>
 </mat-card>
