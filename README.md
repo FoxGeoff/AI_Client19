@@ -388,7 +388,7 @@ constructor( iconRegisty: MatIconRegistry, sanitizer: DomSanitizer) {
 
 ## Check: Add api read all customers
 
-## Check: Add ReplaceLineBreaks pipe
+## Check: Add ReplaceLineBreaks pipe (better way: Add: notes to <mat-form-field> for multi line display)
 
 * Ref: https://stackoverflow.com/questions/41563283/how-to-replace-string-in-angular-2#41564496
 ```

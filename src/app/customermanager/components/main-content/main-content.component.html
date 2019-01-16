@@ -14,9 +14,14 @@
 
       <mat-tab-group>
         <mat-tab label="Notes">
-          <p>
-            {{customer.notes}}
-          </p>
+
+          <form class="example-form">
+            <mat-form-field class="example-full-width">
+              <textarea matInput readonly=true cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="15"
+                cdkAutosizeMaxRows="20"> {{customer.notes}} </textarea>
+            </mat-form-field>
+          </form>
+
         </mat-tab>
         <mat-tab label="Details">
           <p> Name: {{customer.firstname}} {{customer.lastname}}</p>
