@@ -2,29 +2,30 @@
   <mat-spinner></mat-spinner>
 </div>
 <div *ngIf='customer'>
-    <mat-card>
-        <mat-icon>people</mat-icon>
-        <mat-card-title>
-          {{customer.username}}
-          <mat-card-subtitle>
-            <P>City: {{customer.city}}</P>
-          </mat-card-subtitle>
-        </mat-card-title>
-        <mat-card-content>
-    
-          <mat-tab-group>
-            <mat-tab label="Notes">
-              <p>
-                {{customer.notes}}
-              </p>
-            </mat-tab>
-            <mat-tab label="Details">
-                 {{customer.}}
-            </mat-tab>
-          </mat-tab-group>
-        </mat-card-content>
-      </mat-card>
-    </div>
-    <mat-card>
-      <h1>Main Content</h1>
-    </mat-card>
+  <mat-card>
+    <mat-icon>people</mat-icon>
+    <mat-card-title>
+      {{customer.username}}
+      <mat-card-subtitle>
+        <P>City: {{customer.city}}</P>
+      </mat-card-subtitle>
+    </mat-card-title>
+    <mat-card-content>
+
+      <mat-tab-group>
+        <mat-tab label="Notes">
+          <p>
+            {{customer.notes}}
+          </p>
+        </mat-tab>
+        <mat-tab label="Details">
+          <p> Name: {{customer.firstname}} {{customer.lastname}}</p>
+          <p> Address: {{customer.address}},{{customer.city}}, {{customer.state}} {{customer.zipCode}} </p>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
+</div>
+<mat-card>
+  <h1>Main Content</h1>
+</mat-card>
