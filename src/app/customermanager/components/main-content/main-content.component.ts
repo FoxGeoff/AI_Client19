@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Customer } from '../../models/customer';
 import { ActivatedRoute } from '@angular/router';
-import { CustomerService } from '../../services/cutomer.service';
- 
+import { CustomerService } from '../../services/customer.service';
+
 @Component({
   selector: 'app-main-content',
   templateUrl: './main-content.component.html',
@@ -17,13 +17,13 @@ export class MainContentComponent implements OnInit {
     this.route.params.subscribe(params => {
       let id = params['id'];
       if (!id) id = 11;
-      this.customer = null;
+      this.customer = null;;
 
-      this.service.users.subscribe(users => {
+      this.service.customers.subscribe(users => {
         if (users.length == 0) return;
 
         setTimeout(() => {
-          this.customer = this.service.userById(id);
+          this.customer = this.service.customerById(id);
         }, 500);
       });
     });

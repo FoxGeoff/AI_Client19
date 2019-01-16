@@ -10,31 +10,31 @@ export class CustomerService {
   // this is our local internal store
   // not accessable to external code that could manipulate
   // the data
-  private _users: BehaviorSubject<Customer[]>;
+  private _customers: BehaviorSubject<Customer[]>;
 
   private dataStore: {
-    users: Customer[];
+    customers: Customer[];
   }
 
   constructor(private https: HttpClient) {
-    this.dataStore = { users: [] };
+    this.dataStore = { customers: [] };
     // new up our local internal store
-    this._users = new BehaviorSubject<Customer[]>([]);
+    this._customers = new BehaviorSubject<Customer[]>([]);
   }
 
   // subscribe to our local internal store
-  get users(): Observable<Customer[]> {
-    return this._users.asObservable();
+  get customers(): Observable<Customer[]> {
+    return this._customers.asObservable();
   }
 
   //TODO: Fake save requires update to http
   addCustomer(user: Customer): Promise<Customer> {
     return new Promise((resolve, reject) => {
       // fake from Db
-      user.id = this.dataStore.users.length + 1;
+      user.id = this.dataStore.customers.length + 1;
       // push to internal data store
-      this.dataStore.users.push(user);
-      this._users.next(Object.assign({}, this.dataStore).users);
+      this.dataStore.customers.push(user);
+      this._customers.next(Object.assign({}, this.dataStore).customers);
       resolve(user)
     });
   }
@@ -44,10 +44,10 @@ export class CustomerService {
 
     return this.https.get<Customer[]>(userUrl)
       .subscribe(data => {
-        this.dataStore.users = data;
+        this.dataStore.customers = data;
         // Copy data obj to isolate the data from manipulation
         // and expose this data
-        this._users.next(Object.assign({}, this.dataStore).users);
+        this._customers.next(Object.assign({}, this.dataStore).customers);
         console.log("Got customer data");
       }, error => {
         console.error("Failed to fetch customer data");
@@ -55,7 +55,7 @@ export class CustomerService {
       )
   }
 
-  userById(id: number): Customer {
-    return this.dataStore.users.find(x => x.id == id);
+  customerById(id: number): Customer {
+    return this.dataStore.customers.find(x => x.id == id);
   }
 }

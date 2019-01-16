@@ -16,7 +16,7 @@ export class SidenavComponent implements OnInit {
   users: Observable<User[]>;
   @ViewChild(MatDrawer) sidenav: MatDrawer;
 
-  constructor(public breakpointObserver: BreakpointObserver, private userService: UserService, private router: Router) { }
+  constructor(private breakpointObserver: BreakpointObserver, private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     // make layout responsive
@@ -31,7 +31,8 @@ export class SidenavComponent implements OnInit {
           this.smallWidthBreakpoint = true;
         }
       });
-    // display user list from the internal store
+      
+    // display list from the internal store
     this.users = this.userService.users;
     this.userService.LoadAll();
 

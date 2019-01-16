@@ -1,11 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { BreakpointState, BreakpointObserver } from '@angular/cdk/layout';
+import { CustomerService } from '../../services/customer.service';
 import { Observable } from 'rxjs';
+import { Customer } from '../../models/customer';
 import { Router } from '@angular/router';
 import { MatDrawer } from '@angular/material/sidenav';
-
-import { CustomerService } from '../../services/cutomer.service';
-import { Customer } from '../../models/customer';
 
 @Component({
   selector: 'app-sidenav',
@@ -17,7 +16,7 @@ export class SidenavComponent implements OnInit {
   customers: Observable<Customer[]>;
   @ViewChild(MatDrawer) sidenav: MatDrawer;
 
-  constructor(public breakpointObserver: BreakpointObserver, private customerService: CustomerService, private router: Router) { }
+  constructor(private breakpointObserver: BreakpointObserver, private customerService: CustomerService, private router: Router) { }
 
   ngOnInit() {
     // make layout responsive
@@ -33,15 +32,13 @@ export class SidenavComponent implements OnInit {
         }
       });
 
-
-    // display user list from the internal store
-    this.customers = this.customerService.users;
+    // display list from the internal store
+    this.customers = this.customerService.customers;
     this.customerService.LoadAll();
 
     this.customers.subscribe(data => {
       console.log(data);
     })
-
 
     this.router.events.subscribe(() => {
       if (this.smallWidthBreakpoint) {
@@ -51,7 +48,7 @@ export class SidenavComponent implements OnInit {
     })
 
   }
-
+  
   isScreenSmall(): boolean {
     return this.smallWidthBreakpoint;
   }

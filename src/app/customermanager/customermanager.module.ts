@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ToolbarComponent } from './toolbar/toolbar.component';
-import { MainContentComponent } from './components/main-content/main-content.component';
-import { SidenavComponent } from './components/sidenav/sidenav.component';
-import { CustomermanagerAppComponent } from './customermanager-app.component';
 import { MaterialModule } from '../shared/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { UserService } from '../contactmanager/services/user.service';
+
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import { MainContentComponent } from './components/main-content/main-content.component';
+import { CustomerService } from './services/customer.service';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { CustomermanagerAppComponent } from './customermanager-app.component';
 import { NewCustomerDialogComponent } from './components/new-customer-dialog/new-customer-dialog.component';
 
 const routes: Routes = [
@@ -34,8 +35,8 @@ const routes: Routes = [
     ReactiveFormsModule,
   ],
   providers: [
-    UserService,
+    CustomerService,
   ],
-  declarations: [CustomermanagerAppComponent, ToolbarComponent, MainContentComponent, SidenavComponent, CustomermanagerAppComponent, NewCustomerDialogComponent],
+  declarations: [CustomermanagerAppComponent, ToolbarComponent, MainContentComponent, SidenavComponent, NewCustomerDialogComponent],
 })
 export class CustomermanagerModule { }
