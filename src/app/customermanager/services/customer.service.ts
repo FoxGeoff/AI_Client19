@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Customer } from '../models/customer';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,7 @@ export class CustomerService {
   // not accessable to external code that could manipulate
   // the data
   private _customers: BehaviorSubject<Customer[]>;
+  private _newCustomerId: number;
 
   private dataStore: {
     customers: Customer[];
@@ -27,15 +28,28 @@ export class CustomerService {
     return this._customers.asObservable();
   }
 
-  //TODO: Fake save requires update to http
+  // TODO: Refactor method addCustomer() and addCustomerDb
   addCustomer(user: Customer): Promise<Customer> {
     return new Promise((resolve, reject) => {
-      // fake from Db
-      user.id = this.dataStore.customers.length + 1;
+
+      this.addCustomerDb(user).subscribe(
+        (data: Customer) => this._newCustomerId = data.id,
+      );
+
+      user.id = this._newCustomerId;
       // push to internal data store
       this.dataStore.customers.push(user);
       this._customers.next(Object.assign({}, this.dataStore).customers);
       resolve(user)
+    });
+  }
+
+  //move to: data service
+  addCustomerDb(newCustomer: Customer): Observable<Customer> {
+    return this.https.post<Customer>('https://localhost:44334/api/customers', newCustomer, {
+      headers: new HttpHeaders({
+        'Content': 'application/json'
+      })
     });
   }
 

@@ -408,6 +408,9 @@ export class ReplaceLineBreaks implements PipeTransform {
 entryComponents:[NewCustomerDialogComponent,]
 ```
 
+## Check: Add 'new customer' to database
+
+* TBD refactor to Observerables from Promise
 
 
  
