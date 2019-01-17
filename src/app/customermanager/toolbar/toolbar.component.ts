@@ -17,8 +17,8 @@ export class ToolbarComponent implements OnInit {
   }
 
   openAddCustomerDialog(): void {
-    let dialogRef = this.dialog.open(NewCustomerDialogComponent,
-      { width: '450px' });
+    const dialogRef = this.dialog.open(NewCustomerDialogComponent,
+      { width: '450px'});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('Dailog "New Customer" is closed', result);

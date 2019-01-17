@@ -303,7 +303,7 @@ All working ready for next steps
 * check on the Material website the list component
 * Change out to the Navigation List Component
 
-## Check: display user avitar
+## Check: display user avatar
 * Register with MatIconRegistry (allows SVG Icons to be assoiated with svg urls)
 * add SVG icons to the assets file: https://github.com/ajtowf/angularmaterial/
 * source: assets/avatars.svg

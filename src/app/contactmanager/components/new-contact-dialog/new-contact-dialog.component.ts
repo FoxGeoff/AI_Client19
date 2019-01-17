@@ -12,11 +12,9 @@ import { UserService } from '../../services/user.service';
 export class NewContactDialogComponent implements OnInit {
   avatars = ['svg-1', 'svg-2', 'svg-3', 'svg-4'];
   user: User;
-
-  constructor(private dialogRef: MatDialogRef<NewContactDialogComponent>, private userService: UserService) { }
-
   name = new FormControl('', [Validators.required]);
 
+  constructor(private dialogRef: MatDialogRef<NewContactDialogComponent>, private userService: UserService) { }
 
   ngOnInit() {
     this.user = new User();
