@@ -38,5 +38,6 @@ const routes: Routes = [
     CustomerService,
   ],
   declarations: [CustomermanagerAppComponent, ToolbarComponent, MainContentComponent, SidenavComponent, NewCustomerDialogComponent],
+  entryComponents: [NewCustomerDialogComponent]
 })
 export class CustomermanagerModule { }

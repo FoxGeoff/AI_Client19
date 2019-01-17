@@ -401,7 +401,12 @@ export class ReplaceLineBreaks implements PipeTransform {
   }
 }
 ```
+## Check: Add 'new customer' dialog component
 
+* Note: in module we add:
+```
+entryComponents:[NewCustomerDialogComponent,]
+```
 
 
 
