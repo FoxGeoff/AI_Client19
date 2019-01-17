@@ -12,7 +12,11 @@ import { FormControl, Validators } from '@angular/forms';
 export class NewCustomerDialogComponent implements OnInit {
   avatars = ['people'];
   customer: Customer;
-  name = new FormControl('', [Validators.required]);
+  userName = new FormControl('', [Validators.required]);
+  firstName = new FormControl('', [Validators.required]);
+  lastName = new FormControl('', [Validators.required]);
+  companyName = new FormControl('', [Validators.required]);
+
 
   constructor(private dialogRef: MatDialogRef<NewCustomerDialogComponent>, private customerService: CustomerService) { }
 
