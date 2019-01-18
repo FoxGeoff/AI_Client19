@@ -4,9 +4,9 @@
     </button>
     <span>Customer Manager</span>
 
-    <button mat-button (click)="openDeleteCustomerDialog()"><mat-icon>delete</mat-icon></button>
-
     <span class="fill-remaining-space"></span>
+
+    <button mat-icon-button (click)="openDeleteCustomerDialog()"><mat-icon>delete</mat-icon></button>
  
     <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>more_vert</mat-icon>
