@@ -12,6 +12,7 @@ import { CustomerService } from './services/customer.service';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { CustomermanagerAppComponent } from './customermanager-app.component';
 import { NewCustomerDialogComponent } from './components/new-customer-dialog/new-customer-dialog.component';
+import { DeleteCustomerDialogComponent } from './components/delete-customer-dialog/delete-customer-dialog.component';
 
 const routes: Routes = [
   {
@@ -37,7 +38,7 @@ const routes: Routes = [
   providers: [
     CustomerService,
   ],
-  declarations: [CustomermanagerAppComponent, ToolbarComponent, MainContentComponent, SidenavComponent, NewCustomerDialogComponent],
-  entryComponents: [NewCustomerDialogComponent]
+  declarations: [CustomermanagerAppComponent, ToolbarComponent, MainContentComponent, SidenavComponent, NewCustomerDialogComponent, DeleteCustomerDialogComponent],
+  entryComponents: [NewCustomerDialogComponent, DeleteCustomerDialogComponent]
 })
 export class CustomermanagerModule { }

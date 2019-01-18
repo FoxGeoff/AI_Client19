@@ -412,5 +412,9 @@ entryComponents:[NewCustomerDialogComponent,]
 
 * TBD refactor to Observerables from Promise
 
+## Check: Delete 'customer' from database
+
+* delete local and datbase copies
+
 
  
