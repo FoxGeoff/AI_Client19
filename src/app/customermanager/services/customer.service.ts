@@ -11,7 +11,6 @@ export class CustomerService {
   // not accessable to external code that could manipulate
   // the data
   private _customers: BehaviorSubject<Customer[]>;
-  private _newCustomerId: number;
 
   private dataStore: {
     customers: Customer[];
@@ -21,6 +20,7 @@ export class CustomerService {
     this.dataStore = { customers: [] };
     // new up our local internal store
     this._customers = new BehaviorSubject<Customer[]>([]);
+    //new up a Customer
   }
 
   // subscribe to our local internal store
@@ -28,20 +28,43 @@ export class CustomerService {
     return this._customers.asObservable();
   }
 
-  // TODO: Refactor method addCustomer() and addCustomerDb
+  // TODO: Refactor method not using promise
   addCustomer(user: Customer): Promise<Customer> {
     return new Promise((resolve, reject) => {
 
-      this.addCustomerDb(user).subscribe(
-        (data: Customer) => this._newCustomerId = data.id,
-      );
+      this.addCustomerDb(user)
+        .subscribe(
+          (data: Customer) => console.log(data),
+          (err: any) => console.log(err)
+        );
 
-      user.id = this._newCustomerId;
+      user.id = this.dataStore.customers.length + 1; //TODO:
       // push to internal data store
       this.dataStore.customers.push(user);
       this._customers.next(Object.assign({}, this.dataStore).customers);
-      resolve(user)
+
+      resolve(user);
     });
+  }
+
+  // New method
+  saveCustomer(formValues: any): Customer {
+    let newCustomer: Customer = <Customer>formValues;
+
+    this.addCustomerDb(newCustomer)
+      .subscribe(
+        (data: Customer) => console.log( data),
+        (err: any) => console.log(err)
+      );
+
+    newCustomer.id = this.dataStore.customers.length + 1; //TODO:
+    console.log(newCustomer);
+
+    //push to internal data store
+    this.dataStore.customers.push(newCustomer);
+    this._customers.next(Object.assign({}, this.dataStore).customers);
+
+    return newCustomer;
   }
 
   //move to: data service
