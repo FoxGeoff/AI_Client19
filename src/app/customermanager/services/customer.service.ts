@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Customer } from '../models/customer';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { userInfo } from 'os';
 
 @Injectable({
   providedIn: 'root'
@@ -34,11 +35,10 @@ export class CustomerService {
 
       this.addCustomerDb(user)
         .subscribe(
-          (data: Customer) => console.log(data),
+          (data: Customer) => user.id = data.id,
           (err: any) => console.log(err)
         );
 
-      user.id = this.dataStore.customers.length + 1; //TODO:
       // push to internal data store
       this.dataStore.customers.push(user);
       this._customers.next(Object.assign({}, this.dataStore).customers);
@@ -47,29 +47,11 @@ export class CustomerService {
     });
   }
 
-  // New method
-  saveCustomer(formValues: any): Customer {
-    let newCustomer: Customer = <Customer>formValues;
-
-    this.addCustomerDb(newCustomer)
-      .subscribe(
-        (data: Customer) => console.log( data),
-        (err: any) => console.log(err)
-      );
-
-    newCustomer.id = this.dataStore.customers.length + 1; //TODO:
-    console.log(newCustomer);
-
-    //push to internal data store
-    this.dataStore.customers.push(newCustomer);
-    this._customers.next(Object.assign({}, this.dataStore).customers);
-
-    return newCustomer;
-  }
-
   //move to: data service
   addCustomerDb(newCustomer: Customer): Observable<Customer> {
-    return this.https.post<Customer>('https://localhost:44334/api/customers', newCustomer, {
+    const userUrl = 'https://localhost:44334/api/customers';
+
+    return this.https.post<Customer>(userUrl, newCustomer, {
       headers: new HttpHeaders({
         'Content': 'application/json'
       })
