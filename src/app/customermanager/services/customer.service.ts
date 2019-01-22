@@ -69,7 +69,7 @@ export class CustomerService {
         this._customers.next(Object.assign({}, this.dataStore).customers);
       },
       (err: CustomerTrackerError) => console.log(err.friendlyMessage),
-      () => console.log('Finished getting customer data.')
+      () => console.log('Finished getting customer data from server:: LoadAll()')
     );
     this._customers.next(Object.assign({}, this.dataStore).customers);
   }
@@ -78,7 +78,7 @@ export class CustomerService {
   getAllCustomers(): Observable<Customer[] | CustomerTrackerError> {
     const userUrl = 'https://localhost:44334/api/customers';
 
-    console.log('Getting all customers from the server');
+    console.log('Finished getting customer data from server:: getAllCustomers()');
     // Test: '/api/error/500'
     return this.https.get<Customer[]>(userUrl)
       .pipe(

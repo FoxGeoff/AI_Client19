@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Customer } from '../../models/customer';
 import { Router } from '@angular/router';
 import { MatDrawer } from '@angular/material/sidenav';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-sidenav',
@@ -32,13 +33,11 @@ export class SidenavComponent implements OnInit {
         }
       });
 
-    // display list from the internal store
-    this.customers = this.customerService.customers;
+     this.customers = this.customerService.customers;
+    console.log( 'Finished getting all customers from internal store');
+     
     this.customerService.LoadAll();
-
-    this.customers.subscribe(data => {
-      console.log(data);
-    })
+    console.log( 'Finished getting all customers from the server');
 
     this.router.events.subscribe(() => {
       if (this.smallWidthBreakpoint) {
