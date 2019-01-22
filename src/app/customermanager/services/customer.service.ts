@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { Customer } from '../models/customer';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { userInfo } from 'os';
-import { BookTrackerError } from 'src/app/models/bookTrackerError';
 import { catchError } from 'rxjs/operators';
 import { CustomerTrackerError } from '../models/CustomerTrackerError';
 
