@@ -4,6 +4,7 @@ import { Customer } from '../models/customer';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { CustomerTrackerError } from '../models/CustomerTrackerError';
+import { resolve } from 'url';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,6 @@ export class CustomerService {
     return this._customers.asObservable();
   }
 
-  // TODO: Refactor method not using promise
   addCustomer(user: Customer): Promise<Customer> {
     return new Promise((resolve, reject) => {
 
@@ -59,8 +59,8 @@ export class CustomerService {
     });
   }
 
-  LoadAll(): void {
-    this.getAllCustomers().subscribe(
+  getAllCustomers(): void {
+    this.getAllCustomersDb().subscribe(
       (data: Customer[]) => {
         console.log(data);
         this.dataStore.customers = data;
@@ -73,9 +73,8 @@ export class CustomerService {
     );
     this._customers.next(Object.assign({}, this.dataStore).customers);
   }
-
   //move to: data service
-  getAllCustomers(): Observable<Customer[] | CustomerTrackerError> {
+  getAllCustomersDb(): Observable<Customer[] | CustomerTrackerError> {
     const userUrl = 'https://localhost:44334/api/customers';
 
     console.log('Finished getting customer data from server:: getAllCustomers()');
@@ -84,6 +83,34 @@ export class CustomerService {
       .pipe(
         catchError(err => this.handleHttpError(err))
       );
+  }
+
+
+  deleteOne(customer: Customer): Promise<Customer> {
+
+    return new Promise((resolve, reject) => {
+      this.deleteCustomerDb(customer.id).subscribe(
+        null,
+        (err: any) => console.log(err)
+      )
+      // pull from internal data store
+      let arr: Customer[] = this.dataStore.customers;
+      let value = arr.find(cust => cust.id === customer.id);
+      this.dataStore.customers = arr.filter(item => item !== value)
+
+      // Copy data obj to isolate the data from manipulation
+      // and expose this data
+      this._customers.next(Object.assign({}, this.dataStore).customers);
+
+      resolve(customer);
+    });
+  }
+
+  //move to: data service
+  deleteCustomerDb(id: number): Observable<void> {
+    const userUrl = 'https://localhost:44334/api/customers';
+
+    return this.https.delete<void>(`userUrl/${id}`);
   }
 
   //move to: data service

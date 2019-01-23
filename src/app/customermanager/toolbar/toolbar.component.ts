@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Inject } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { NewCustomerDialogComponent } from '../components/new-customer-dialog/new-customer-dialog.component';
 import { DeleteCustomerDialogComponent } from '../components/delete-customer-dialog/delete-customer-dialog.component';
@@ -14,7 +14,7 @@ export class ToolbarComponent implements OnInit {
   constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
-    
+
   }
 
   openAddCustomerDialog(): void {
@@ -27,10 +27,12 @@ export class ToolbarComponent implements OnInit {
   }
 
   openDeleteCustomerDialog(): void {
-    const dialogRef = this.dialog.open(DeleteCustomerDialogComponent,
-      {
-        width: '450px', data: { customer: 'delet me', }
-      });
+    const dialogRef = this.dialog.open(DeleteCustomerDialogComponent, {
+      width: '450px',
+      data: {
+        animal: 'panda'
+      }
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('Dailog "Delete Customer" is closed', result);

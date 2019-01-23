@@ -1,5 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Customer } from '../../models/customer';
+import { CustomerService } from '../../services/customer.service';
+
+export interface DialogData {
+  animal: 'panda';
+}
 
 @Component({
   selector: 'app-delete-customer-dialog',
@@ -7,10 +13,18 @@ import { MatDialogRef } from '@angular/material';
   styleUrls: ['./delete-customer-dialog.component.css']
 })
 export class DeleteCustomerDialogComponent implements OnInit {
-
-  constructor(private dialogRef: MatDialogRef<DeleteCustomerDialogComponent>) { }
+  customer: Customer;
+  
+  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData , private dialogRef: MatDialogRef<DeleteCustomerDialogComponent>, private customerService: CustomerService) { }
 
   ngOnInit() {
+    this.customer = new Customer();
+  }
+
+  delete() {
+    this.customerService.deleteOne(this.customer).then(customer => {
+      this.dialogRef.close(this.customer);
+    });
   }
 
   dismiss() {
