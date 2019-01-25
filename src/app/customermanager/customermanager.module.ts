@@ -13,6 +13,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { CustomermanagerAppComponent } from './customermanager-app.component';
 import { NewCustomerDialogComponent } from './components/new-customer-dialog/new-customer-dialog.component';
 import { DeleteCustomerDialogComponent } from './components/delete-customer-dialog/delete-customer-dialog.component';
+import { CustomerParameterService } from './services/customer-parameter.service';
 
 const routes: Routes = [
   {
@@ -37,6 +38,7 @@ const routes: Routes = [
   ],
   providers: [
     CustomerService,
+    CustomerParameterService
   ],
   declarations: [CustomermanagerAppComponent, ToolbarComponent, MainContentComponent, SidenavComponent, NewCustomerDialogComponent, DeleteCustomerDialogComponent],
   entryComponents: [NewCustomerDialogComponent, DeleteCustomerDialogComponent]

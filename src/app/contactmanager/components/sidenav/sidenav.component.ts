@@ -31,15 +31,15 @@ export class SidenavComponent implements OnInit {
           this.smallWidthBreakpoint = true;
         }
       });
-      
+
     // display list from the internal store
     this.users = this.userService.users;
     this.userService.LoadAll();
-
-    this.users.subscribe(data => {
-      console.log(data);
-    })
-
+    /*
+        this.users.subscribe(data => {
+          console.log(data);
+        })
+    */
     this.router.events.subscribe(() => {
       if (this.smallWidthBreakpoint) {
         console.log('Selection made on Smallscreen, close side bar');

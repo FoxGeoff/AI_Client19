@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Customer } from '../../models/customer';
 import { ActivatedRoute } from '@angular/router';
 import { CustomerService } from '../../services/customer.service';
+import { CustomerParameterService } from '../../services/customer-parameter.service';
 
 @Component({
   selector: 'app-main-content',
@@ -11,7 +12,17 @@ import { CustomerService } from '../../services/customer.service';
 export class MainContentComponent implements OnInit {
   customer: Customer;
 
-  constructor(private route: ActivatedRoute, private service: CustomerService) { }
+  get detailCustomerId(): number {
+    return this.customerParameterService.detailedCustomerId;
+  }
+
+  set detailCustomerId(value: number) {
+    this.customerParameterService.detailedCustomerId = value;
+  }
+
+  constructor(private route: ActivatedRoute,
+    private service: CustomerService,
+    private customerParameterService: CustomerParameterService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -19,12 +30,13 @@ export class MainContentComponent implements OnInit {
       if (!id) id = 11;
       this.customer = null;;
 
-      this.service.customers.subscribe(users => {
-        if (users.length == 0) return;
+      this.service.customers.subscribe(customers => {
+        if (customers.length == 0) return;
 
         setTimeout(() => {
           this.customer = this.service.customerById(id);
-          }, 500);
+          this.customer? this.detailCustomerId = this.customer.id :this.detailCustomerId = null;
+        }, 500);
       });
     });
   }

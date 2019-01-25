@@ -415,8 +415,15 @@ entryComponents:[NewCustomerDialogComponent,]
 ## Check: Delete 'customer' from database
 
 * delete local and datbase copies
-* Ref.: https://stackoverflow.com/questions/5767325/how-do-i-remove-a-particular-element-from-an-array-in-javascript
+* Ref. ```detailedCustomerId: number;``` property bag
+* Code:
+```
+export class CustomerParameterService {
+  detailedCustomerId: number;
 
+  constructor() { }
+}
+```
 
 
  

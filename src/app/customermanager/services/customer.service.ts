@@ -4,7 +4,6 @@ import { Customer } from '../models/customer';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { CustomerTrackerError } from '../models/CustomerTrackerError';
-import { resolve } from 'url';
 
 @Injectable({
   providedIn: 'root'
