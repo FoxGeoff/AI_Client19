@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Customer } from '../../models/customer';
 import { CustomerService } from '../../services/customer.service';
+import { CustomerParameterService } from '../../services/customer-parameter.service';
 
 export interface DialogData {
   animal: 'panda';
@@ -14,11 +15,15 @@ export interface DialogData {
 })
 export class DeleteCustomerDialogComponent implements OnInit {
   customer: Customer;
-  
-  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData , private dialogRef: MatDialogRef<DeleteCustomerDialogComponent>, private customerService: CustomerService) { }
+  detaiCustomerId: number;
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData,
+    private dialogRef: MatDialogRef<DeleteCustomerDialogComponent>,
+    private customerService: CustomerService, private custParamService:CustomerParameterService) { }
 
   ngOnInit() {
     this.customer = new Customer();
+    this.detaiCustomerId = this.custParamService.detailedCustomerId;
   }
 
   delete() {

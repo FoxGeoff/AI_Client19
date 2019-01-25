@@ -35,7 +35,7 @@ export class MainContentComponent implements OnInit {
 
         setTimeout(() => {
           this.customer = this.service.customerById(id);
-          this.customer? this.detailCustomerId = this.customer.id :this.detailCustomerId = null;
+          this.detailCustomerId = this.customer.id;
         }, 500);
       });
     });
