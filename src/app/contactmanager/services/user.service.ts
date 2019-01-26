@@ -51,7 +51,8 @@ export class UserService {
         // and expose this data
         this._users.next(Object.assign({}, this.dataStore).users);
       }, error => {
-        console.error("Failed to fetch data");
+        console.log(error);
+        console.error("UserService::LoadAll(): Failed to fetch data");
       }
       )
   }
