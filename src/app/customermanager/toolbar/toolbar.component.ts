@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Inject } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { NewCustomerDialogComponent } from '../components/new-customer-dialog/new-customer-dialog.component';
 import { DeleteCustomerDialogComponent } from '../components/delete-customer-dialog/delete-customer-dialog.component';
 
@@ -11,10 +11,17 @@ import { DeleteCustomerDialogComponent } from '../components/delete-customer-dia
 export class ToolbarComponent implements OnInit {
   @Output() toggleSidenav = new EventEmitter<void>();
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
 
+  }
+
+  openDeleteCustomerSnackBar(): void {
+    
+      this.snackBar.open(message, action, {
+        duration: 2000,
+      });
   }
 
   openAddCustomerDialog(): void {

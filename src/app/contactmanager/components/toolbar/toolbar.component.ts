@@ -20,7 +20,7 @@ export class ToolbarComponent implements OnInit {
       { width: '450px' });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dailod is closed', result);
+      console.log('The dailog is closed', result);
     })
   }
 }
