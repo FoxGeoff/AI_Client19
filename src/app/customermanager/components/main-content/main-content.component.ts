@@ -11,15 +11,7 @@ import { CustomerParameterService } from '../../services/customer-parameter.serv
 })
 export class MainContentComponent implements OnInit {
   customer: Customer;
-
-  get detailCustomer(): Customer {
-    return this.customerParameterService.detailedCustomer;
-  }
-
-  set detailCustomer(value: Customer) {
-    this.customerParameterService.detailedCustomer = value;
-  }
-
+  
   constructor(private route: ActivatedRoute,
     private service: CustomerService,
     private customerParameterService: CustomerParameterService) { }
@@ -35,7 +27,7 @@ export class MainContentComponent implements OnInit {
 
         setTimeout(() => {
           this.customer = this.service.customerById(id);
-          this.detailCustomer = this.customer;
+          this.customerParameterService.detailedCustomer = this.customer;
         }, 500);
       });
     });

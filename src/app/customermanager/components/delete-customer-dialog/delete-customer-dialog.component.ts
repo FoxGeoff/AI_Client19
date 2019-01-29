@@ -15,7 +15,7 @@ export interface DialogData {
 })
 export class DeleteCustomerDialogComponent implements OnInit {
   customer: Customer;
-  detaiCustomerId: number;
+  detailedCustomerId: number;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData,
     private dialogRef: MatDialogRef<DeleteCustomerDialogComponent>,
@@ -23,7 +23,7 @@ export class DeleteCustomerDialogComponent implements OnInit {
 
   ngOnInit() {
     this.customer = new Customer();
-    this.detaiCustomerId = this.custParamService.detailedCustomer.id;
+    this.detailedCustomerId = this.custParamService.detailedCustomer.id;
   }
 
   delete() {

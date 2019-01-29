@@ -5,8 +5,16 @@ import { Customer } from '../models/customer';
   providedIn: 'root'
 })
 export class CustomerParameterService {
-  detailedCustomer: Customer;
+  private _detailedCustomer: Customer;
 
-  //TODO: check for null Customer
+  get detailedCustomer(): Customer {
+    if(!this._detailedCustomer) console.log(`Error: CustomerParameterService() detailedCutstomer called when not set`)
+    return this._detailedCustomer;
+  }
+
+  set detailedCustomer(value: Customer) {
+    this._detailedCustomer = value;
+  }
+
   constructor() { }
 }
