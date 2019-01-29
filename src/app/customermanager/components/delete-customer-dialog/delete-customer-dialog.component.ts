@@ -23,7 +23,7 @@ export class DeleteCustomerDialogComponent implements OnInit {
 
   ngOnInit() {
     this.customer = new Customer();
-    this.detaiCustomerId = this.custParamService.detailedCustomerId;
+    this.detaiCustomerId = this.custParamService.detailedCustomer.id;
   }
 
   delete() {

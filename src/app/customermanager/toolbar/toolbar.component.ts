@@ -20,7 +20,7 @@ export class ToolbarComponent implements OnInit {
 
   openDeleteCustomerSnackBar(): void {
     let isActive: boolean = false;
-    let id = this.custParamService.detailedCustomerId;
+    let id = this.custParamService.detailedCustomer.id;
 
     this.openSnackBar(`Customer: ${id} deleted`, 'Undo').onAction()
       .subscribe(

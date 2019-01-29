@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
-
+import { Customer } from '../models/customer';
+ 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerParameterService {
-  detailedCustomerId: number;
+  detailedCustomer: Customer;
 
+  //TODO: check for null Customer
   constructor() { }
 }

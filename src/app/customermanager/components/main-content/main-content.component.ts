@@ -12,12 +12,12 @@ import { CustomerParameterService } from '../../services/customer-parameter.serv
 export class MainContentComponent implements OnInit {
   customer: Customer;
 
-  get detailCustomerId(): number {
-    return this.customerParameterService.detailedCustomerId;
+  get detailCustomer(): Customer {
+    return this.customerParameterService.detailedCustomer;
   }
 
-  set detailCustomerId(value: number) {
-    this.customerParameterService.detailedCustomerId = value;
+  set detailCustomer(value: Customer) {
+    this.customerParameterService.detailedCustomer = value;
   }
 
   constructor(private route: ActivatedRoute,
@@ -35,7 +35,7 @@ export class MainContentComponent implements OnInit {
 
         setTimeout(() => {
           this.customer = this.service.customerById(id);
-          this.detailCustomerId = this.customer.id;
+          this.detailCustomer = this.customer;
         }, 500);
       });
     });
