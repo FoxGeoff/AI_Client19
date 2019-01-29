@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Inject } from '@angular/core';
-import { MatDialog, MatSnackBar } from '@angular/material';
+import { MatDialog, MatSnackBar, SimpleSnackBar, MatSnackBarRef } from '@angular/material';
 import { NewCustomerDialogComponent } from '../components/new-customer-dialog/new-customer-dialog.component';
 import { DeleteCustomerDialogComponent } from '../components/delete-customer-dialog/delete-customer-dialog.component';
 import { CustomerParameterService } from '../services/customer-parameter.service';
@@ -19,27 +19,20 @@ export class ToolbarComponent implements OnInit {
   }
 
   openDeleteCustomerSnackBar(): void {
-    let isActive: boolean;
+    let isActive: boolean = false;
     let id = this.custParamService.detailedCustomerId;
 
-    let snackBarRef = this.snackBar.open('Customer deleted', 'Undo', {
+    this.openSnackBar(`Customer: ${id} deleted`, 'Undo').onAction()
+      .subscribe(
+        () => { isActive = true; },
+        err => console.log(err),
+        () => { isActive ? console.log(`Don't do anything for Customer: ${id}`) : console.log(`Delete Customer: ${id}`); }
+      );
+  }
+
+  openSnackBar(message: string, action: string): MatSnackBarRef<SimpleSnackBar> {
+    return this.snackBar.open(message, action, {
       duration: 5000,
-    });
-
-    snackBarRef.afterOpened().subscribe(() => {
-      isActive = false;
-      console.log(`Customer ${id} is active =` + isActive);
-    });
-
-    snackBarRef.onAction().subscribe(() => {
-      isActive = true;
-      console.log(`Customer ${id} is active =` + isActive);
-    });
-
-    snackBarRef.afterDismissed().subscribe(() => {
-      isActive ? console.log(`Don't do anything for Customer: ${id}`) : console.log(`Mark Customer inactive: ${id}`);
-      // edit customer
-      
     });
   }
 
