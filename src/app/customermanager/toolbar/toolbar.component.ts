@@ -38,6 +38,8 @@ export class ToolbarComponent implements OnInit {
 
     snackBarRef.afterDismissed().subscribe(() => {
       isActive ? console.log(`Don't do anything for Customer: ${id}`) : console.log(`Mark Customer inactive: ${id}`);
+      // edit customer
+      
     });
   }
 

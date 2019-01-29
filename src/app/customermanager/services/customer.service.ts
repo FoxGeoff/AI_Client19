@@ -83,7 +83,25 @@ export class CustomerService {
         catchError(err => this.handleHttpError(err))
       );
   }
+  /*
+  updateCustomer(id: number): Customer {
+    let updateCustomer = this.customerById(id);
+    let updatedCustomerDb = this.updateCustomerDb(updateCustomer);
 
+    return updatedCustomerDb;
+  }
+  */
+ 
+  //move to: data service
+  updateCustomerDb(updatedCustomer: Customer): Observable<void> {
+    const userUrl = `https://localhost:44334/api/customers/${updatedCustomer.id}`;
+
+    return this.https.put<void>(userUrl, updatedCustomer, {
+      headers: new HttpHeaders({
+        'Content': 'application/json'
+      })
+    });
+  }
 
   deleteOne(customer: Customer): Promise<Customer> {
 
