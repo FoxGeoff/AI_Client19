@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { Customer } from '../../models/customer';
 import { Router } from '@angular/router';
 import { MatDrawer } from '@angular/material/sidenav';
-import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-sidenav',
@@ -33,11 +32,11 @@ export class SidenavComponent implements OnInit {
         }
       });
 
-     this.customers = this.customerService.customers;
-    console.log( 'Finished getting all customers from internal store');
-     
+    this.customers = this.customerService.customers;
+    console.log('Finished getting all customers from internal store');
+
     this.customerService.getAllCustomers();
-    console.log( 'Finished getting all customers from the server');
+    console.log('Finished getting all customers from the server');
 
     this.router.events.subscribe(() => {
       if (this.smallWidthBreakpoint) {
@@ -47,7 +46,7 @@ export class SidenavComponent implements OnInit {
     })
 
   }
-  
+
   isScreenSmall(): boolean {
     return this.smallWidthBreakpoint;
   }
