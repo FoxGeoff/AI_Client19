@@ -86,21 +86,47 @@ export class CustomerService {
   }
 
   updateCustomer(customer: Customer): void {
+    // update database and remove from internal store
     this.updateCustomerDb(customer)
       .subscribe(
-        (data: void) => console.log(`${customer.username} updated successfully`),
+        (data: void) => {
+          console.log(`${customer.username} updated database successfully`);
+          // pull from internal data store
+          /*
+          let arr: Customer[] = this.dataStore.customers;
+          let value = arr.find(cust => cust.id === customer.id);
+          this.dataStore.customers = arr.filter(item => item !== value);
+          // Copy data obj to isolate the data from manipulation and expose this data
+          this._customers.next(Object.assign({}, this.dataStore).customers);
+          */
+        },
         (err: any) => console.log(err)
       );
-    // pull from internal data store
-    let arr: Customer[] = this.dataStore.customers;
-    let value = arr.find(cust => cust.id === customer.id);
-    this.dataStore.customers = arr.filter(item => item !== value)
+    // retrieve from database and add to internal store
+    this.getCustomerById(customer.id)
+      .subscribe(
+        (data: Customer) => {
+          console.log(`${data.username} retrieved from database successfully`);
+          // push onto internal data store
+          this.dataStore.customers.push(data);
+          // Copy data obj to isolate the data from manipulation and expose this data
+          this._customers.next(Object.assign({}, this.dataStore).customers);
+        },
+        (err) => console.log(err)
+      );
+  }
 
-    // pull from database
+  //move to: data service
+  getCustomerById(id: number): Observable<Customer> {
+    const userUrl = `https://localhost:44334/api/customers/${id}`;
 
-    // Copy data obj to isolate the data from manipulation
-    // and expose this data
-    this._customers.next(Object.assign({}, this.dataStore).customers);
+    console.log('Getting customer from the server id: ' + id);
+    return this.https.get<Customer>(userUrl, {
+      headers: new HttpHeaders({
+        'Accept': 'application/json',
+        'Authorization': 'my-token'
+      })
+    });
   }
 
   //move to: data service
