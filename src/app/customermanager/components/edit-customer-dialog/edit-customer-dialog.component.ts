@@ -3,13 +3,14 @@ import { MatDialogRef } from '@angular/material';
 import { Customer } from '../../models/customer';
 import { CustomerService } from '../../services/customer.service';
 import { FormControl, Validators } from '@angular/forms';
+import { CustomerParameterService } from '../../services/customer-parameter.service';
 
 @Component({
-  selector: 'app-new-customer-dialog',
-  templateUrl: './new-customer-dialog.component.html',
-  styleUrls: ['./new-customer-dialog.component.css']
+  selector: 'app-edit-customer-dialog',
+  templateUrl: './edit-customer-dialog.component.html',
+  styleUrls: ['./edit-customer-dialog.component.css']
 })
-export class NewCustomerDialogComponent implements OnInit {
+export class EditCustomerDialogComponent implements OnInit {
   avatars = ['people'];
   customer: Customer;
   userName = new FormControl('', [Validators.required]);
@@ -17,16 +18,19 @@ export class NewCustomerDialogComponent implements OnInit {
   lastName = new FormControl('', [Validators.required]);
   companyName = new FormControl('', [Validators.required]);
 
-  constructor(private dialogRef: MatDialogRef<NewCustomerDialogComponent>, private customerService: CustomerService) { }
+  constructor(
+    private dialogRef: MatDialogRef<EditCustomerDialogComponent>,
+    private customerService: CustomerService,
+    private customerParameterService: CustomerParameterService) { }
 
   ngOnInit() {
-    this.customer = new Customer();
+    this.customer = this.customerParameterService.detailedCustomer;
   }
 
   save() {
-    this.customerService.addCustomer(this.customer).then(customer => {
-      this.dialogRef.close(this.customer);
-    });
+    this.customerService.updateCustomer(this.customer);
+    
+    this.dialogRef.close(this.customer);
   }
 
   dismiss() {

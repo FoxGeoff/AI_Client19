@@ -3,6 +3,7 @@ import { MatDialog, MatSnackBar, SimpleSnackBar, MatSnackBarRef } from '@angular
 import { NewCustomerDialogComponent } from '../components/new-customer-dialog/new-customer-dialog.component';
 import { DeleteCustomerDialogComponent } from '../components/delete-customer-dialog/delete-customer-dialog.component';
 import { CustomerParameterService } from '../services/customer-parameter.service';
+import { EditCustomerDialogComponent } from '../components/edit-customer-dialog/edit-customer-dialog.component';
 
 @Component({
   selector: 'app-toolbar',
@@ -34,6 +35,15 @@ export class ToolbarComponent implements OnInit {
     return this.snackBar.open(message, action, {
       duration: 5000,
     });
+  }
+
+  openEditCustomerDilog() {
+    const dialogRef = this.dialog.open(EditCustomerDialogComponent,
+      { width: '450px' });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dailog "Edit Customer" is closed', result);
+    })
   }
 
   openAddCustomerDialog(): void {

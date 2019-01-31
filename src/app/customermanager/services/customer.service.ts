@@ -9,6 +9,7 @@ import { CustomerTrackerError } from '../models/CustomerTrackerError';
   providedIn: 'root'
 })
 export class CustomerService {
+
   // this is our local internal store
   // not accessable to external code that could manipulate
   // the data
@@ -83,15 +84,25 @@ export class CustomerService {
         catchError(err => this.handleHttpError(err))
       );
   }
-  /*
-  updateCustomer(id: number): Customer {
-    let updateCustomer = this.customerById(id);
-    let updatedCustomerDb = this.updateCustomerDb(updateCustomer);
 
-    return updatedCustomerDb;
+  updateCustomer(customer: Customer): void {
+    this.updateCustomerDb(customer)
+      .subscribe(
+        (data: void) => console.log(`${customer.username} updated successfully`),
+        (err: any) => console.log(err)
+      );
+    // pull from internal data store
+    let arr: Customer[] = this.dataStore.customers;
+    let value = arr.find(cust => cust.id === customer.id);
+    this.dataStore.customers = arr.filter(item => item !== value)
+
+    // pull from database
+
+    // Copy data obj to isolate the data from manipulation
+    // and expose this data
+    this._customers.next(Object.assign({}, this.dataStore).customers);
   }
-  */
- 
+
   //move to: data service
   updateCustomerDb(updatedCustomer: Customer): Observable<void> {
     const userUrl = `https://localhost:44334/api/customers/${updatedCustomer.id}`;

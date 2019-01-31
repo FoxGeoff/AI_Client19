@@ -1,0 +1,62 @@
+<h2 mat-dialog-title>
+  Edit Customer
+</h2>
+<mat-dialog-content>
+  <div class="example-container">
+
+    <mat-form-field>
+      <input matInput placeholder="Use Name" [formControl]='userName' [(ngModel)]="customer.username" required>
+      <mat-error *ngIf="userName.hasError('required')">You must enter a user name</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="First Name" [formControl]='firstName' [(ngModel)]="customer.firstName" required>
+      <mat-error *ngIf="firstName.hasError('required')">You must enter a first name</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Last Name" [formControl]='lastName' [(ngModel)]="customer.lastName" required>
+      <mat-error *ngIf="lastName.hasError('required')">You must enter a last name</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Company Name" [formControl]='companyName' [(ngModel)]="customer.companyName"
+        required>
+      <mat-error *ngIf="companyName.hasError('required')">You must enter a company (or "none")</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput placeholder="Notes" [(ngModel)]="customer.notes"></textarea>
+    </mat-form-field>
+
+    <!--  address -->
+    <mat-form-field>
+      <input matInput placeholder="Address" [(ngModel)]="customer.address">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Address 2" [(ngModel)]="customer.address2">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="City" [(ngModel)]="customer.city">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="State" [(ngModel)]="customer.state">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="Zip Code" [(ngModel)]="customer.zipCode">
+      </mat-form-field>
+
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button color="primary" (click)="save()">
+    <mat-icon>save</mat-icon> Save
+  </button>
+  <button mat-button color="primary" (click)="dismiss()">
+    <mat-icon>cancel</mat-icon> Cancel
+  </button>
+</mat-dialog-actions>
