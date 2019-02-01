@@ -5,6 +5,8 @@ import { Customer } from '../models/customer';
   providedIn: 'root'
 })
 export class CustomerParameterService {
+  username: string;
+
   private _detailedCustomer: Customer;
 
   get detailedCustomer(): Customer {

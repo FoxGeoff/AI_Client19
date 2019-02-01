@@ -25,15 +25,19 @@ export class EditCustomerDialogComponent implements OnInit {
 
   ngOnInit() {
     this.customer = this.customerParameterService.detailedCustomer;
+    //TODO: Create a snapshot of the form initial values (in CustomerParameterService)
+    this.customerParameterService.username = this.customer.username;
   }
 
   save() {
     this.customerService.updateCustomer(this.customer);
-    
+
     this.dialogRef.close(this.customer);
   }
 
   dismiss() {
+    // TODO: reset form to initial values
+    this.userName.setValue(this.customerParameterService.username);
     this.dialogRef.close(null);
   }
 
