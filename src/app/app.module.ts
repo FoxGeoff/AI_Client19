@@ -12,9 +12,10 @@ import { CoreModule } from './core/core.module';
 
 
 const routes: Routes = [
-  {path: '', component: DashboardComponent},
+  { path: '', component: DashboardComponent },
   { path: 'contactmanager', loadChildren: './contactmanager/contactmanager.module#ContactmanagerModule' },
   { path: 'customermanager', loadChildren: './customermanager/customermanager.module#CustomermanagerModule' },
+  { path: 'invoicemanager', loadChildren: './invoicemanager/invoicemanager.module#InvoicemanagerModule' },
   { path: 'demo', loadChildren: './demo/demo.module#DemoModule' },
   { path: '**', redirectTo: '' },
 ]
