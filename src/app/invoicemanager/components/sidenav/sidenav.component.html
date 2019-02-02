@@ -1,2 +1,21 @@
-<app-toolbar></app-toolbar>
-<router-outlet></router-outlet>
+<mat-drawer-container class="mat-drawer-container">
+  <mat-drawer class="mat-drawer mat-elevation-z10" #sidenav [opened]="!isScreenSmall()" [mode]="isScreenSmall() ? 'over' : 'side'">
+
+    <mat-toolbar color="primary">Invoices</mat-toolbar>
+
+    <mat-nav-list>
+      <mat-list-item *ngFor="let user of users | async">
+        <a matLine [routerLink]="['/invoicemanager', user.id]">
+          <mat-icon svgIcon="{{user.avatar}}"></mat-icon> {{ user.name }}
+        </a>
+      </mat-list-item>
+    </mat-nav-list>
+
+  </mat-drawer>
+  <mat-drawer-content class="mat-drawer-content">
+    <app-toolbar (toggleSidenav)="sidenav.toggle()"></app-toolbar>
+    <div class="wrapper">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

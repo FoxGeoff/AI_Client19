@@ -10,6 +10,7 @@ import { MaterialModule } from '../shared/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { InvoiceService } from './services/invoice.service';
 
 const routes: Routes = [
   {
@@ -32,6 +33,9 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     HttpClientModule,
     ReactiveFormsModule,
+  ],
+  providers: [
+    InvoiceService,
   ]
 })
 export class InvoicemanagerModule { }
