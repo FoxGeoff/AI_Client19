@@ -1,11 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs';
-import { MatDrawer } from '@angular/material';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { Router } from '@angular/router';
-import { Invoice } from '../../models/invoice';
 import { InvoiceService } from '../../services/invoice.service';
-
+import { Observable } from 'rxjs';
+import { Invoice } from '../../models/invoice';
+import { Router } from '@angular/router';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-sidenav',
@@ -14,10 +13,13 @@ import { InvoiceService } from '../../services/invoice.service';
 })
 export class SidenavComponent implements OnInit {
   smallWidthBreakpoint: boolean;
-  users: Observable<Invoice[]>;
+  invoices: Observable<Invoice[]>;
   @ViewChild(MatDrawer) sidenav: MatDrawer;
 
-  constructor(private breakpointObserver: BreakpointObserver, private userService: InvoiceService, private router: Router) { }
+  constructor(
+    private breakpointObserver: BreakpointObserver, 
+    private invoiceService: InvoiceService, 
+    private router: Router) { }
 
   ngOnInit() {
     // make layout responsive
@@ -34,13 +36,9 @@ export class SidenavComponent implements OnInit {
       });
 
     // display list from the internal store
-    this.users = this.userService.users;
-    this.userService.LoadAll();
-    /*
-        this.users.subscribe(data => {
-          console.log(data);
-        })
-    */
+    //--this.invoices = this.invoiceService.invoices;
+    //--this.invoiceService.LoadAll();
+    
     this.router.events.subscribe(() => {
       if (this.smallWidthBreakpoint) {
         console.log('Selection made on Smallscreen, close side bar');

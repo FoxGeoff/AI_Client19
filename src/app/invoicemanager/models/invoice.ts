@@ -14,6 +14,4 @@ export class Invoice {
     totalFreight: number;
     totalWarranty: number;
     totalMisc: number;
-
-
 }
