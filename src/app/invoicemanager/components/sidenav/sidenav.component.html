@@ -3,15 +3,15 @@
   <mat-drawer class="mat-drawer mat-elevation-z10" #sidenav [opened]="!isScreenSmall()" [mode]="isScreenSmall() ? 'over' : 'side'">
  
     <mat-toolbar color="primary">Invoices</mat-toolbar>
-<!--
+ 
     <mat-nav-list>
-      <mat-list-item *ngFor="let user of Invoices | async">
-        <a matLine [routerLink]="['/invoicemanager', user.id]">
-          <mat-icon>invoice</mat-icon> description
+      <mat-list-item *ngFor="let invoice of invoices | async">
+        <a matLine [routerLink]="['/invoicemanager', invoice.id]">
+          <mat-icon>account_balance</mat-icon> {{invoice.invoiceDescription}}
         </a>
       </mat-list-item>
     </mat-nav-list>
-  -->
+ 
   </mat-drawer>
   <mat-drawer-content class="mat-drawer-content">
     <app-toolbar (toggleSidenav)="sidenav.toggle()"></app-toolbar>
@@ -20,4 +20,3 @@
     </div>
   </mat-drawer-content>
 </mat-drawer-container>
-

@@ -36,9 +36,9 @@ export class SidenavComponent implements OnInit {
       });
 
     // display list from the internal store
-    //--this.invoices = this.invoiceService.invoices;
-    //--this.invoiceService.LoadAll();
-    
+    this.invoices = this.invoiceService.invoices;
+    this.invoiceService.getAllInvoices();
+
     this.router.events.subscribe(() => {
       if (this.smallWidthBreakpoint) {
         console.log('Selection made on Smallscreen, close side bar');
