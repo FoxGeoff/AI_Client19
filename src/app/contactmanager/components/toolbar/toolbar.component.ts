@@ -23,4 +23,5 @@ export class ToolbarComponent implements OnInit {
       console.log('The dailog is closed', result);
     })
   }
+  
 }
