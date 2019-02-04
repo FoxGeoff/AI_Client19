@@ -23,17 +23,30 @@
           </form>
 
         </mat-tab>
-        <mat-tab label="Details">
-          <p> Name: {{customer.firstName || "firstName"}} {{customer.lastName|| "lastName"}} </p>
-          <p> Address: {{customer.address}},{{customer.city}}, {{customer.state}} {{customer.zipCode}} </p>
+        
+        <mat-tab label="Invoices">
+
         </mat-tab>
+
+        <mat-tab label="Files">
+
+        </mat-tab>
+
+        <mat-tab label="Products">
+
+        </mat-tab>
+
+        <mat-tab label="Payments">
+
+        </mat-tab>
+
       </mat-tab-group>
     </mat-card-content>
   </mat-card>
 </div>
 <mat-card>
   <div *ngIf='customer'>
-    <h1>Main Content</h1>
+    <h1>Details</h1>
     <p> Name: {{customer.firstName || "firstName"}} {{customer.lastName || "lastName"}} </p>
     <p> Address: {{customer.address}},{{customer.city}}, {{customer.state}} {{customer.zipCode}} </p>
   </div>
