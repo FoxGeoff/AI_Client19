@@ -15,6 +15,7 @@ import { NewCustomerDialogComponent } from './components/new-customer-dialog/new
 import { DeleteCustomerDialogComponent } from './components/delete-customer-dialog/delete-customer-dialog.component';
 import { CustomerParameterService } from './services/customer-parameter.service';
 import { EditCustomerDialogComponent } from './components/edit-customer-dialog/edit-customer-dialog.component';
+import { InvoicesComponent } from './components/invoices/invoices.component';
 
 const routes: Routes = [
   {
@@ -48,7 +49,7 @@ const routes: Routes = [
     SidenavComponent, 
     NewCustomerDialogComponent, 
     DeleteCustomerDialogComponent, 
-    EditCustomerDialogComponent,
+    EditCustomerDialogComponent, InvoicesComponent,
   ],
   entryComponents: [
     NewCustomerDialogComponent, 

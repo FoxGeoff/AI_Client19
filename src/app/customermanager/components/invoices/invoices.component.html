@@ -1,0 +1,38 @@
+<!--
+<pre>
+  {{invoices | json}}
+</pre>
+-->
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+  <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+    <td mat-cell *matCellDef="let note"> {{note.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+    <td mat-cell *matCellDef="let note"> {{note.invoiceDescription}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Revision Date </th>
+    <td mat-cell *matCellDef="let note"> {{note.revision1Date | date: 'yyyy-MM-dd'}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="amount">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Amount </th>
+    <td mat-cell *matCellDef="let note"> {{note.totalEquipment | currency: USD }} (Equipment) </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[2, 5, 10, 20]" showFirstLastButtons></mat-paginator>
