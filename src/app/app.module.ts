@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'contactmanager', loadChildren: './contactmanager/contactmanager.module#ContactmanagerModule' },
   { path: 'customermanager', loadChildren: './customermanager/customermanager.module#CustomermanagerModule' },
   { path: 'invoicemanager', loadChildren: './invoicemanager/invoicemanager.module#InvoicemanagerModule' },
+ // { path: 'invoiceproductsmanager', loadChildren: './invoiceproductsmanager/invoiceproductsmanager.module#InvoiceproductsmanagerModule' },
   { path: 'demo', loadChildren: './demo/demo.module#DemoModule' },
   { path: '**', redirectTo: '' },
 ]
