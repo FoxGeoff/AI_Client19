@@ -10,13 +10,12 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CoreModule } from './core/core.module';
 
-
 const routes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'contactmanager', loadChildren: './contactmanager/contactmanager.module#ContactmanagerModule' },
   { path: 'customermanager', loadChildren: './customermanager/customermanager.module#CustomermanagerModule' },
-  { path: 'invoicemanager', loadChildren: './invoicemanager/invoicemanager.module#InvoicemanagerModule' },
- // { path: 'invoiceproductsmanager', loadChildren: './invoiceproductsmanager/invoiceproductsmanager.module#InvoiceproductsmanagerModule' },
+  { path: 'invoicemanager', loadChildren: './invoicemanager/invoicemanager.module#InvoicemanagerModule' }, 
+  { path: 'invoiceproductmanager', loadChildren: './invoice-productmanager/invoice-productmanager.module#InvoiceProductmanagerModule' },
   { path: 'demo', loadChildren: './demo/demo.module#DemoModule' },
   { path: '**', redirectTo: '' },
 ]
@@ -24,7 +23,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

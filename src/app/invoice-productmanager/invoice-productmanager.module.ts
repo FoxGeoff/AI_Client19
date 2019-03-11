@@ -1,13 +1,44 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { MaterialModule } from '../shared/material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 import { InvoiceProductmanagerAppComponent } from './invoice-productmanager-app.component';
-import { SidenavComponent } from  './../invoice-productmanager/component/sidenav/sidenav.component';
-import { ToolbarComponent } from  './../invoice-productmanager/component/toolbar/toolbar.component';
+import { ToolbarComponent } from './../invoice-productmanager/component/toolbar/toolbar.component';
+import { MainContentComponent } from './../invoice-productmanager/component/main-content/main-content.component';
+import { SidenavComponent } from './../invoice-productmanager/component/sidenav/sidenav.component';
+
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  {
+    path: '', component: InvoiceProductmanagerAppComponent,
+    children: [
+      { path: ':id', component: MainContentComponent },
+      { path: '', component: MainContentComponent }
+    ]
+  },
+  { path: '**', redirectTo: '' },
+];
 
 @NgModule({
-  declarations: [InvoiceProductmanagerAppComponent, SidenavComponent, ToolbarComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule,
+    FlexLayoutModule,
+    FormsModule,
+    RouterModule.forChild(routes),
+    HttpClientModule,
+    ReactiveFormsModule,
+  ],
+  declarations: [
+    InvoiceProductmanagerAppComponent,
+    ToolbarComponent,
+    MainContentComponent,
+    SidenavComponent,
   ]
 })
 export class InvoiceProductmanagerModule { }
