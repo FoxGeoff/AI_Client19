@@ -12,6 +12,8 @@ import { MainContentComponent } from './../invoice-productmanager/component/main
 import { SidenavComponent } from './../invoice-productmanager/component/sidenav/sidenav.component';
 
 import { RouterModule, Routes } from '@angular/router';
+import { InvoiceProductService } from './services/invoice-product.service';
+import { InvoiceProductPrameterService } from './services/invoice-product-prameter.service';
 
 const routes: Routes = [
   {
@@ -33,6 +35,10 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     HttpClientModule,
     ReactiveFormsModule,
+  ],
+  providers: [
+    InvoiceProductService,
+    InvoiceProductPrameterService,
   ],
   declarations: [
     InvoiceProductmanagerAppComponent,
