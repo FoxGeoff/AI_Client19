@@ -1,11 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MatDrawer } from '@angular/material';
-import { InvoiceProduct } from '../../model/InvoiceProduct';
+import { InvoiceProduct } from '../../models/InvoiceProduct';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/contactmanager/services/user.service';
-import { User } from 'src/app/contactmanager/models/user';
+import { InvoiceProductService } from '../../services/invoice-product.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -14,13 +13,13 @@ import { User } from 'src/app/contactmanager/models/user';
 })
 export class SidenavComponent implements OnInit {
   smallWidthBreakpoint: boolean;
-  users: Observable<User[]>;
+  invoiceProducts: Observable<InvoiceProduct[]>;
   @ViewChild(MatDrawer) sidenav: MatDrawer;
 
   
   constructor(
     private breakpointObserver: BreakpointObserver, 
-    private userService: UserService, 
+    private invoiceProductService: InvoiceProductService, 
     private router: Router) { }
 
   ngOnInit() {
@@ -37,9 +36,11 @@ export class SidenavComponent implements OnInit {
         }
       });
 
-      // display list from the internal store
-      this.users = this.userService.users;
-      this.userService.LoadAll();
+      this.invoiceProducts = this.invoiceProductService.invoiceProducts;
+      console.log('Finished getting all invoiceProducts from internal store');
+  
+      this.invoiceProductService.getAllCustomers();
+      console.log('Finished getting all invoiceProducts from the server');
       
       this.router.events.subscribe(() => {
         if (this.smallWidthBreakpoint) {

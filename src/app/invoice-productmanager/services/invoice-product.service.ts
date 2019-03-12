@@ -27,7 +27,7 @@ export class InvoiceProductService {
   }
 
   // subscribe to our local internal store
-  get customers(): Observable<InvoiceProduct[]> {
+  get invoiceProducts(): Observable<InvoiceProduct[]> {
     return this._invoiceProducts.asObservable();
   }
 
