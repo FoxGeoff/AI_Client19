@@ -7,7 +7,7 @@
     <mat-nav-list>
       <mat-list-item *ngFor="let prod of Products | async">
         <a matLine [routerLink]="['/productmanager', prod.id]">
-          <mat-icon>local_mall</mat-icon> {{prod.productDescription}}
+          <mat-icon>local_mall</mat-icon> {{prod.aiPartNumber}}
         </a>
       </mat-list-item>
     </mat-nav-list>
