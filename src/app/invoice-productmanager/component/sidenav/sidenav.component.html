@@ -5,7 +5,7 @@
 
     <mat-nav-list>
       <mat-list-item *ngFor="let invoiceProd of invoiceProducts | async">
-        <a matLine [routerLink]="['/contactmanager', invoiceProd.id]">
+        <a matLine [routerLink]="['/invoiceproductmanager', invoiceProd.id]">
           <mat-icon>shop</mat-icon> {{invoiceProd.associatedInvoiceId}} {{invoiceProd.aiPartNumber}}
         </a>
       </mat-list-item>
