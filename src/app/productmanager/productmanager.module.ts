@@ -26,16 +26,6 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    SidenavComponent,
-    ProductmanagerAppComponent,
-    ToolbarComponent,
-    MainContentComponent,
-  ],
-  providers: [
-    ProductService,
-    ProductPrameterService,
-  ],
   imports: [
     CommonModule,
     MaterialModule,
@@ -44,6 +34,16 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     HttpClientModule,
     ReactiveFormsModule,
-  ]
+  ],
+  declarations: [
+    ProductmanagerAppComponent,
+    ToolbarComponent,
+    MainContentComponent,
+    SidenavComponent,
+  ],
+  providers: [
+    ProductService,
+    ProductPrameterService,
+  ] 
 })
 export class ProductmanagerModule { }
