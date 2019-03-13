@@ -35,8 +35,21 @@ export class SidenavComponent implements OnInit {
          this.smallWidthBreakpoint = true;
        }
      });
-  }
 
+     this.Products = this.ProductService.invoiceProducts;
+     console.log('Finished getting all invoiceProducts from internal store');
+ 
+     this.ProductService.getAllCustomers();
+     console.log('Finished getting all invoiceProducts from the server');
+     
+     this.router.events.subscribe(() => {
+       if (this.smallWidthBreakpoint) {
+         console.log('Selection made on Smallscreen, close side bar');
+         this.sidenav.close();
+       }
+     })
+ 
+   }
 
   isScreenSmall(): boolean {
     return this.smallWidthBreakpoint;
