@@ -1,3 +1,15 @@
-<p>
-  toolbar works!
-</p>
+<mat-toolbar color="primary">
+  <button mat-button class="sidenav-toggle" (click)="toggleSidenav.emit()">
+    <mat-icon class="mat-icon">menu</mat-icon>
+  </button>
+  <span>Product Manager</span>
+  <span class="fill-remaining-space"></span>
+
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="openAddContactDialog()">New Product</button>
+  </mat-menu>
+</mat-toolbar>
