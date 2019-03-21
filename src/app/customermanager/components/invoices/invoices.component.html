@@ -14,13 +14,14 @@
 
   <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
-
+ 
   <ng-container matColumnDef="position">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Invoice </th>
     <td mat-cell *matCellDef="let invoice">
-      <button mat-icon-button matTooltip="Invoice details" [routerLink]="['/invoicemanager',invoice.id]">
-        <mat-icon>infomation</mat-icon> {{invoice.id}}
+      <button mat-icon-button matTooltip="Details {{invoice.id}}" [routerLink]="['/invoicemanager',invoice.id]">
+        <mat-icon>infomation</mat-icon>
       </button>
+      {{invoice.id}}
     </td>
   </ng-container>
 

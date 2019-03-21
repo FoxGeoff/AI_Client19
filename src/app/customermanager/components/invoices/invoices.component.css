@@ -8,6 +8,7 @@ table {
     width: 100%;
   }
 
-  .mat-icon-button {
-    color:blue   
+  .mat-icon {
+    color:blue;
+    margin-bottom: 5px;   
 }
