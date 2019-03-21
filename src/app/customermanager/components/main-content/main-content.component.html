@@ -3,9 +3,9 @@
 </div>
 <div *ngIf='customer'>
   <mat-card>
-    <mat-icon>people</mat-icon>
     <mat-card-title>
-      {{customer.username}} pwd:{{customer.password}}
+      <mat-icon>people</mat-icon>
+      {{customer.username}}
       <mat-card-subtitle>
         <P>(Id: {{customer.id}}) Address: {{customer.address}}, City: {{customer.city}}, </P>
       </mat-card-subtitle>
@@ -13,19 +13,20 @@
     <mat-card-content>
 
       <mat-tab-group>
+
+        <mat-tab label="Invoices">
+          <app-invoices [invoices]="customer.invoices"></app-invoices>
+        </mat-tab>
+
         <mat-tab label="Notes">
 
           <form class="example-form">
             <mat-form-field class="example-full-width">
-              <textarea matInput readonly=true cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="15"
-                cdkAutosizeMaxRows="20"> {{customer.notes}} </textarea>
+              <textarea matInput readonly=true cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                cdkAutosizeMinRows="15" cdkAutosizeMaxRows="20"> {{customer.notes}} </textarea>
             </mat-form-field>
           </form>
 
-        </mat-tab>
-        
-        <mat-tab label="Invoices">
-          <app-invoices [invoices]="customer.invoices"></app-invoices>
         </mat-tab>
 
         <mat-tab label="Files">
@@ -48,6 +49,5 @@
   <div *ngIf='customer'>
     <h1>Details</h1>
     <p> Name: {{customer.firstName || "firstName"}} {{customer.lastName || "lastName"}} </p>
-    <p> Address: {{customer.address}},{{customer.city}}, {{customer.state}} {{customer.zipCode}} </p>
   </div>
 </mat-card>
