@@ -9,6 +9,7 @@ import { MaterialModule } from './shared/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CoreModule } from './core/core.module';
+import { BackComponent } from './back/back.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     DashboardComponent,
+    BackComponent,
   ],
   imports: [
     BrowserModule,

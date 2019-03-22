@@ -1,11 +1,13 @@
 <mat-toolbar color="primary" [class.mat-elevation-z4]="true">
-    <span>{{title}}</span>
-    <button mat-icon-button matTooltip="Dashboard" [routerLink]="['']">
-        <mat-icon>home</mat-icon>
-    </button>
+
+    <app-back></app-back>
+
+    <button mat-button [routerLink]="['']">{{title}}</button>
+    <!--
     <button mat-icon-button matTooltip="Contact Manager" [routerLink]="['/contactmanager']">
         <mat-icon>person</mat-icon>
     </button>
+    -->
     <button mat-icon-button matTooltip="Customer Manager" [routerLink]="['/customermanager']">
         <mat-icon>people_outine</mat-icon>
     </button>
