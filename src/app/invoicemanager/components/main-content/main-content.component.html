@@ -1,6 +1,17 @@
-<mat-card>
-    <div *ngIf='invoice'>
-      <h1>Invoice</h1>
+<mat-list>
+  <mat-list-item>
+      <div *ngIf='!invoice'>
+          <button mat-button color="accent"> {{id? 'Working...': 'Select an invoice from the list'}}</button>
+        </div>
+        <div *ngIf='id && !invoice'>
+          <mat-spinner [diameter]="30"></mat-spinner>
+        </div>
+  </mat-list-item>
+</mat-list>
+
+<div *ngIf='invoice'>
+  <mat-card>
+    <h1>Invoice for {{</h1>
       <p> Description: {{invoice.invoiceDescription}} </p>
-    </div>
   </mat-card>
+</div>
