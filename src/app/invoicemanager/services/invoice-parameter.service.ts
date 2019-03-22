@@ -1,22 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Invoice } from '../models/invoice';
-import { Customer } from 'src/app/customermanager/models/customer';
-
+ 
 @Injectable({
   providedIn: 'root'
 })
 export class InvoiceParameterService {
-  customer: Customer;
+  username: string;
 
-  _customerInvoices: Invoice[];
+  private _detailedInvoice: Invoice;
 
-  get CustomerInvoices(): Invoice[] {
-    if (!this._customerInvoices) console.log(`Error: InvoiceParameterService() invoiceCutstomer called when not set`)
-    return this._customerInvoices;
+  get detailedInvoice(): Invoice {
+    if(!this._detailedInvoice) console.log(`Error: InvoiceParameterService() detailedCutstomer called when not set`)
+    return this._detailedInvoice;
   }
 
-  set CustomerInvoices(value: Invoice[]) {
-    this._customerInvoices = value;
+  set detailedInvoice(value: Invoice) {
+    this._detailedInvoice = value;
   }
 
   constructor() { }

@@ -1,33 +1,33 @@
 import { Component, OnInit } from '@angular/core';
-import { Customer } from 'src/app/customermanager/models/customer';
+import { Invoice } from 'src/app/invoicemanager/models/invoice';
 import { ActivatedRoute } from '@angular/router';
-import { CustomerService } from 'src/app/customermanager/services/customer.service';
-import { CustomerParameterService } from 'src/app/customermanager/services/customer-parameter.service';
-
+import { InvoiceService } from 'src/app/invoicemanager/services/invoice.service';
+import { InvoiceParameterService } from '../../services/invoice-parameter.service';
+ 
 @Component({
   selector: 'app-main-content',
   templateUrl: './main-content.component.html',
   styleUrls: ['./main-content.component.css']
 })
 export class MainContentComponent implements OnInit {
-  customer: Customer;
+  invoice: Invoice;
 
   constructor(private route: ActivatedRoute,
-    private service: CustomerService,
-    private customerParameterService: CustomerParameterService) { }
+    private service: InvoiceService,
+    private customerParameterService: InvoiceParameterService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       let id = params['id'];
       if (!id) id = 11;
-      this.customer = null;;
+      this.invoice = null;;
 
-      this.service.customers.subscribe(customers => {
-        if (customers.length == 0) return;
+      this.service.invoices.subscribe(invoices => {
+        if (invoices.length == 0) return;
 
         setTimeout(() => {
-          this.customer = this.service.customerById(id);
-          this.customerParameterService.detailedCustomer = this.customer;
+          this.invoice = this.service.invoiceById(id);
+          this.customerParameterService.detailedInvoice = this.invoice;
         }, 500);
       });
     });

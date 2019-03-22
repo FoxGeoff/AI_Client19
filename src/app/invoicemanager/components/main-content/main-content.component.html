@@ -1,3 +1,6 @@
-<p>
-  main-content works!
-</p>
+<mat-card>
+    <div *ngIf='invoice'>
+      <h1>Invoice</h1>
+      <p> Description: {{invoice.invoiceDescription}} </p>
+    </div>
+  </mat-card>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Invoice } from '../models/invoice';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { InvoiceTrackerError } from '../models/invoice-traker-error';
 import { catchError } from 'rxjs/operators';
@@ -30,7 +30,35 @@ export class InvoiceService {
   get invoices(): Observable<Invoice[]> {
     return this._invoices.asObservable();
   }
-
+  /*
+    addCustomer(user: Customer): Promise<Customer> {
+      return new Promise((resolve, reject) => {
+  
+        this.addCustomerDb(user)
+          .subscribe(
+            (data: Customer) => user.id = data.id,
+            (err: any) => console.log(err)
+          );
+  
+        // push to internal data store
+        this.dataStore.customers.push(user);
+        this._customers.next(Object.assign({}, this.dataStore).customers);
+  
+        resolve(user);
+      });
+    }
+  
+    //move to: data service
+    addCustomerDb(newCustomer: Customer): Observable<Customer> {
+      const userUrl = 'https://localhost:44334/api/customers';
+  
+      return this.https.post<Customer>(userUrl, newCustomer, {
+        headers: new HttpHeaders({
+          'Content': 'application/json'
+        })
+      });
+    }
+  */
   getAllInvoices(): void {
     this.getAllInvoicesDb().subscribe(
       (data: Invoice[]) => {
@@ -57,7 +85,22 @@ export class InvoiceService {
       );
   }
 
-  userById(id: number): Invoice {
+  /* updateCustomer(customer: Customer): void {} */
+
+  //move to: data service
+  getCustomerById(id: number): Observable<Invoice> {
+    const userUrl = `https://localhost:44334/api/invoices/${id}`;
+
+    console.log('Getting customer from the server id: ' + id);
+    return this.https.get<Invoice>(userUrl, {
+      headers: new HttpHeaders({
+        'Accept': 'application/json',
+        'Authorization': 'my-token'
+      })
+    });
+  }
+
+  invoiceById(id: number): Invoice {
     return this.dataStore.invoices.find(x => x.id == id);
   }
 
