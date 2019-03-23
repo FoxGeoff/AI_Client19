@@ -3,9 +3,9 @@ import { Invoice } from 'src/app/invoicemanager/models/invoice';
 import { ActivatedRoute } from '@angular/router';
 import { InvoiceService } from 'src/app/invoicemanager/services/invoice.service';
 import { InvoiceParameterService } from '../../services/invoice-parameter.service';
-import { isNull } from 'util';
-import { NullViewportScroller } from '@angular/common/src/viewport_scroller';
-
+import { Customer } from 'src/app/customermanager/models/customer';
+import { CustomerService } from 'src/app/customermanager/services/customer.service';
+ 
 @Component({
   selector: 'app-main-content',
   templateUrl: './main-content.component.html',
@@ -14,10 +14,12 @@ import { NullViewportScroller } from '@angular/common/src/viewport_scroller';
 export class MainContentComponent implements OnInit {
   invoice: Invoice;
   id: number;
+  customer: Customer;
 
   constructor(private route: ActivatedRoute,
     private service: InvoiceService,
-    private invoiceParameterService: InvoiceParameterService) { }
+    private invoiceParameterService: InvoiceParameterService,
+    private customerService: CustomerService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -26,11 +28,14 @@ export class MainContentComponent implements OnInit {
 
       this.service.invoices.subscribe(invoices => {
         if (invoices.length == 0) return;
-    
+
         setTimeout(() => {
           console.log(this.id);
           this.invoice = this.service.invoiceById(this.id);
           this.invoiceParameterService.detailedInvoice = this.invoice;
+          //TODO: here this does not work!
+          this.customer = this.customerService.customerById(this.invoice.associatedCustomerId);
+          if(this.customer == null) console.log("missing");
         }, 500);
       });
     });

@@ -88,7 +88,7 @@ export class InvoiceService {
   /* updateCustomer(customer: Customer): void {} */
 
   //move to: data service
-  getCustomerById(id: number): Observable<Invoice> {
+  getInvoiceById(id: number): Observable<Invoice> {
     const userUrl = `https://localhost:44334/api/invoices/${id}`;
 
     console.log('Getting customer from the server id: ' + id);
