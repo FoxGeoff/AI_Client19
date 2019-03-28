@@ -12,7 +12,6 @@ import { MainContentComponent } from './components/main-content/main-content.com
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 import { Routes, RouterModule } from '@angular/router';
-import { InvoiceService } from './services/invoice.service';
 
 const routes: Routes = [
   {
@@ -36,7 +35,7 @@ const routes: Routes = [
     ReactiveFormsModule,
   ],
   providers: [
-    InvoiceService,
+    //InvoiceService,
   ],
   declarations: [
     InvoicemanagerAppComponent, 

@@ -12,7 +12,6 @@ import { MainContentComponent } from './components/main-content/main-content.com
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 import { Routes, RouterModule } from '@angular/router';
-import { UserService } from './services/user.service';
 import { NotesComponent } from './components/notes/notes.component';
 import { NewContactDialogComponent } from './components/new-contact-dialog/new-contact-dialog.component';
 
@@ -38,7 +37,7 @@ const routes: Routes = [
     ReactiveFormsModule,
   ],
   providers: [
-    UserService,
+    //UserService,
   ],
   declarations: [
     ContactmanagerAppComponent,

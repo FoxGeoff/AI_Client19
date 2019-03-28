@@ -7,8 +7,6 @@ import { MainContentComponent } from './component/main-content/main-content.comp
 import { SidenavComponent } from './component/sidenav/sidenav.component';
 
 import { RouterModule, Routes } from '@angular/router';
-import { ProductService } from './services/product.service';
-import { ProductPrameterService } from './services/product-prameter.service';
 import { MaterialModule } from '../shared/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -42,8 +40,8 @@ const routes: Routes = [
     SidenavComponent,
   ],
   providers: [
-    ProductService,
-    ProductPrameterService,
+    //ProductService,
+    //ProductPrameterService,
   ] 
 })
 export class ProductmanagerModule { }
