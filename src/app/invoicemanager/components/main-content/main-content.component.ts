@@ -30,13 +30,12 @@ export class MainContentComponent implements OnInit {
         if (invoices.length == 0) return;
 
         setTimeout(() => {
-          console.log(this.id);
+          //from local storeget invoice
           this.invoice = this.service.invoiceById(this.id);
           this.invoiceParameterService.detailedInvoice = this.invoice;
-          //TODO: here this does not work!
+          //from local store get customer
           this.customer = this.customerService.customerById(this.invoice.associatedCustomerId);
-          if(this.customer == null) console.log("missing");
-        }, 500);
+         }, 500);
       });
     });
   }

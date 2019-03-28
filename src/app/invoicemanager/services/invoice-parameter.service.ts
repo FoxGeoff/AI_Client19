@@ -10,7 +10,7 @@ export class InvoiceParameterService {
   private _detailedInvoice: Invoice;
 
   get detailedInvoice(): Invoice {
-    if(!this._detailedInvoice) console.log(`Error: InvoiceParameterService() detailedCutstomer called when not set`)
+    if(!this._detailedInvoice) console.log(`Error: InvoiceParameterService() detailedInvoice called when not set`)
     return this._detailedInvoice;
   }
 
