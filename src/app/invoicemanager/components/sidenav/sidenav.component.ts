@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Invoice } from '../../models/invoice';
 import { Router } from '@angular/router';
 import { MatDrawer } from '@angular/material/sidenav';
+import { CustomerService } from 'src/app/customermanager/services/customer.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -19,6 +20,7 @@ export class SidenavComponent implements OnInit {
   constructor(
     private breakpointObserver: BreakpointObserver, 
     private invoiceService: InvoiceService, 
+    private customerService: CustomerService,
     private router: Router) { }
 
   ngOnInit() {
@@ -38,6 +40,8 @@ export class SidenavComponent implements OnInit {
     // display list from the internal store
     this.invoices = this.invoiceService.invoices;
     this.invoiceService.getAllInvoices();
+    // refresh internal store from server
+    this.customerService.getAllCustomers();
 
     this.router.events.subscribe(() => {
       if (this.smallWidthBreakpoint) {
