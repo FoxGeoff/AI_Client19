@@ -3,13 +3,14 @@
 </div>
 <div *ngIf='customer'>
   <mat-card>
-    <mat-card-title>
-      <mat-icon>people</mat-icon>
-      {{customer.username}}
-      <mat-card-subtitle>
-        <P>(Id: {{customer.id}}) Address: {{customer.address}}, City: {{customer.city}}, </P>
-      </mat-card-subtitle>
-    </mat-card-title>
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon>people</mat-icon> {{customer.username}}
+        <mat-card-subtitle>
+          <p>(Id: {{customer.id}}) Address: {{customer.address}}, City: {{customer.city}}, </p>
+        </mat-card-subtitle>
+      </mat-card-title>
+    </mat-card-header>
     <mat-card-content>
 
       <mat-tab-group>

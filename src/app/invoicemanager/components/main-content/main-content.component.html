@@ -11,9 +11,171 @@
 
 <div *ngIf='invoice'>
   <mat-card>
-    <div *ngIf='customer'>
-      <h1>Invoice for customer: {{customer.id}}</h1>
-    </div>
-    <p> Description: {{invoice.invoiceDescription}} </p>
+    <mat-card-header>
+      <mat-card-title *ngIf='customer'>
+        <button mat-icon-button matTooltip="Details {{customer.id}}" [routerLink]="['/customermanager',customer.id]">
+          <mat-icon>infomation</mat-icon>
+        </button>
+        <mat-icon>people</mat-icon> {{customer.username}}
+      </mat-card-title>
+      <mat-card-subtitle>
+        <strong>Invoice: </strong>{{invoice.id}}
+        <strong>Description: </strong>{{invoice.invoiceDescription}}
+        <p><strong>Deposit required: </strong> {{invoice.isNoDepositNeeded == 1? 'Yes' : 'No'}}</p>
+        <p><strong>Confimed: </strong> {{invoice.isConfirmed == 1? 'Yes' : 'No'}}</p>
+        <p>
+          <strong>Status: </strong>
+          <span *ngIf='invoice.associatedStatusId == 4'>Lost</span>
+          <span *ngIf='invoice.associatedStatusId == 7'>Paid In Full</span>
+        </p>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-tab-group>
+        <mat-tab label="Dates">
+          <table style="width:240px; text-align: left">
+            <tr *ngIf='invoice.dateCustomerViewedInvoice'>
+              <td>
+                Customer viewed
+              </td>
+              <td>
+                {{invoice.dateCustomerViewedInvoice|date}}
+              </td>
+            </tr>
+            <tr *ngIf='invoice.revision1Date'>
+              <td>
+                Revision #1
+              </td>
+              <td>
+                {{invoice.revision1Date|date}}
+              </td>
+            </tr>
+            <tr *ngIf='invoice.revision2Date'>
+              <td>
+                Revision #2
+              </td>
+              <td>
+                {{invoice.revision2Date|date}}
+              </td>
+            </tr>
+            <tr *ngIf='invoice.revision3Date'>
+              <td>
+                Revision #3
+              </td>
+              <td>
+                {{invoice.revision3Date|date}}
+              </td>
+            </tr>
+            <tr *ngIf='invoice.dateConfirmed'>
+              <td>
+                Confirmed
+              </td>
+              <td>
+                {{invoice.dateConfirmed|date}}
+              </td>
+            </tr>
+
+            <tr *ngIf='invoice.dateStartWork'>
+              <td>
+                Started work
+              </td>
+              <td>
+                {{invoice.dateStartWork|date}}
+              </td>
+            </tr>
+            <tr *ngIf='invoice.dateDepositDue'>
+              <td>
+                Deposit made
+              </td>
+              <td>
+                {{invoice.dateDepositDue|date}}
+              </td>
+            </tr>
+            <tr *ngIf='invoice.dateJobComplete'>
+              <td>
+                Job completed
+              </td>
+              <td>
+                {{invoice.dateJobComplete|date}}
+              </td>
+            </tr>
+            <tr *ngIf='invoice.datePaidInFull'>
+              <td>
+                Paid in full
+              </td>
+              <td>
+                {{invoice.datePaidInFull|date}}
+              </td>
+            </tr>
+            <tr *ngIf='invoice.dateLost'>
+              <td>
+                Lost
+              </td>
+              <td>
+                {{invoice.dateLost|date}}
+              </td>
+            </tr>
+
+            <tr *ngIf='invoice.dateFollowUp'>
+              <td>
+                Follow up
+              </td>
+              <td>
+                {{invoice.dateFollowUp|date}}
+              </td>
+            </tr>
+          </table>
+        </mat-tab>
+
+        <mat-tab label="Costs">
+          <table style="width:200px; text-align: right">
+            <tr *ngIf='invoice.deliveryPayment'>
+              <td>Delivery</td>
+              <td>{{invoice.deliveryPayment|currency}}</td>
+            </tr>
+            <tr *ngIf='invoice.totalEquipment'>
+              <td>Equipment</td>
+              <td>{{invoice.totalEquipment|currency}}</td>
+            </tr>
+            <tr *ngIf='invoice.totalLabor'>
+              <td>Labor</td>
+              <td>{{invoice.totalLabor|currency}}</td>
+            </tr>
+            <tr *ngIf='invoice.totalProgramming'>
+              <td>Programming</td>
+              <td>{{invoice.totalProgramming|currency}}</td>
+            </tr>
+            <tr *ngIf='invoice.totalFreight'>
+              <td>Freight</td>
+              <td>{{invoice.totalFreight|currency}}</td>
+            </tr>
+            <tr *ngIf='invoice.totalWarranty'>
+              <td>Warranty</td>
+              <td>{{invoice.totalWarranty|currency}}</td>
+            </tr>
+            <tr *ngIf='invoice.totalMisc'>
+              <td>Miscellaneous</td>
+              <td>{{invoice.totalMisc|currency}}</td>
+            </tr>
+            <tr>
+              <td><strong>Total:</strong></td>
+              <td>
+                <strong>
+                  {{invoice.deliveryPayment 
+                    + invoice.totalEquipment 
+                    + invoice.totalLabor 
+                    + invoice.totalProgramming
+                    + invoice.totalFreight
+                    + invoice.totalWarranty
+                    + invoice.totalMisc | currency: USD }}
+                </strong>
+              </td>
+
+            </tr>
+          </table>
+        </mat-tab>
+
+      </mat-tab-group>
+    </mat-card-content>
   </mat-card>
 </div>
