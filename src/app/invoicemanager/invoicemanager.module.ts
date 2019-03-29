@@ -12,6 +12,7 @@ import { MainContentComponent } from './components/main-content/main-content.com
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 import { Routes, RouterModule } from '@angular/router';
+import { InvoiceProductsComponent } from './components/invoice-products/invoice-products.component';
 
 const routes: Routes = [
   {
@@ -41,7 +42,8 @@ const routes: Routes = [
     InvoicemanagerAppComponent, 
     ToolbarComponent, 
     MainContentComponent,
-    SidenavComponent, 
+    SidenavComponent,
+    InvoiceProductsComponent, 
   ],
 })
 export class InvoicemanagerModule { }

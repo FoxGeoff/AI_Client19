@@ -32,6 +32,11 @@
     </mat-card-header>
     <mat-card-content>
       <mat-tab-group>
+
+          <mat-tab label="Products">
+              <app-invoice-products [invoiceProducts]="invoice.invoiceProducts"> </app-invoice-products> 
+            </mat-tab>
+
         <mat-tab label="Dates">
           <table style="width:240px; text-align: left">
             <tr *ngIf='invoice.dateCustomerViewedInvoice'>
@@ -115,7 +120,6 @@
                 {{invoice.dateLost|date}}
               </td>
             </tr>
-
             <tr *ngIf='invoice.dateFollowUp'>
               <td>
                 Follow up
@@ -170,7 +174,6 @@
                     + invoice.totalMisc | currency: USD }}
                 </strong>
               </td>
-
             </tr>
           </table>
         </mat-tab>
