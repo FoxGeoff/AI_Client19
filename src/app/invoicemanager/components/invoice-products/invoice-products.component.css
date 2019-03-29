@@ -16,3 +16,8 @@ table {
 .mat-paginator {
   margin-bottom: 75px;
 }
+
+.tool-bar-items .mat-icon-button {
+  width: 100px;
+  margin-right: 10px;
+}

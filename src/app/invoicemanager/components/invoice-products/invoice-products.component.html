@@ -6,10 +6,14 @@
 <mat-form-field>
   <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
 </mat-form-field>
-<button mat-icon-button color="primary">
-  <mat-icon aria-label="Add Invoice-Product">add</mat-icon> add new
-</button>
-
+<div class="tool-bar-items">
+  <button mat-icon-button color="primary">
+    <mat-icon aria-label="Add Invoice-Product">add</mat-icon> add new
+  </button>
+  <button mat-icon-button color="primary">
+    <mat-icon aria-label="Add Invoice-Product">information</mat-icon> details
+  </button>
+</div>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
 
   <!-- Note that these columns can be defined in any order.
@@ -32,9 +36,9 @@
   </ng-container>
 
   <ng-container matColumnDef="room">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Room </th>
-      <td mat-cell *matCellDef="let invoiceProduct"> {{invoiceProduct.room}} </td>
-    </ng-container>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Room </th>
+    <td mat-cell *matCellDef="let invoiceProduct"> {{invoiceProduct.room}} </td>
+  </ng-container>
 
   <ng-container matColumnDef="date">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Revision Date </th>
@@ -51,4 +55,4 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-<mat-paginator [pageSizeOptions]="[ 5, 10, 20]" showFirstLastButtons></mat-paginator>
+<mat-paginator [pageSizeOptions]="[ 10, 5, 20]" showFirstLastButtons></mat-paginator>
