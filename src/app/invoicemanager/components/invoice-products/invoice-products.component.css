@@ -12,3 +12,7 @@ table {
     color:blue;
     margin-bottom: 5px;   
 }
+
+.mat-paginator {
+  margin-bottom: 75px;
+}

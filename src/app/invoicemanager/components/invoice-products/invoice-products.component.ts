@@ -10,7 +10,7 @@ import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 export class InvoiceProductsComponent implements OnInit {
   @Input() invoiceProducts: InvoiceProduct[];
 
-  displayedColumns: string[] = ['position', 'title', 'amount', 'date'];
+  displayedColumns: string[] = ['position', 'title', 'room', 'amount', 'date'];
   dataSource: MatTableDataSource<InvoiceProduct>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;

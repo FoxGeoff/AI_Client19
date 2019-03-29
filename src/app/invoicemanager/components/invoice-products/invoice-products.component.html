@@ -1,3 +1,54 @@
+<!--
 <pre>
     {{invoiceProducts | json}}
 </pre>
+-->
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+<button mat-icon-button color="primary">
+  <mat-icon aria-label="Add Invoice-Product">add</mat-icon> add new
+</button>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+  <!-- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Invoice-Product </th>
+    <td mat-cell *matCellDef="let invoiceProduct">
+      <button mat-icon-button matTooltip="Details {{invoiceProduct.id}}"
+        [routerLink]="['/invoiceProductemanager',invoiceProduct.id]">
+        <mat-icon>infomation</mat-icon>
+      </button>
+      {{invoiceProduct.id}}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+    <td mat-cell *matCellDef="let invoiceProduct"> {{invoiceProduct.productDescription}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="room">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Room </th>
+      <td mat-cell *matCellDef="let invoiceProduct"> {{invoiceProduct.room}} </td>
+    </ng-container>
+
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Revision Date </th>
+    <td style="text-align: right;" mat-cell *matCellDef="let invoiceProduct">
+      {{invoiceProduct.dateAdded | date: 'yyyy-MM-dd'}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="amount" style="text-align: right;">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Retail </th>
+    <td style="text-align: right;" mat-cell *matCellDef="let invoiceProduct">{{invoiceProduct.sellPrice | currency}}
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[ 5, 10, 20]" showFirstLastButtons></mat-paginator>

@@ -33,12 +33,16 @@
     <mat-card-content>
       <mat-tab-group>
 
-          <mat-tab label="Products">
-              <app-invoice-products [invoiceProducts]="invoice.invoiceProducts"> </app-invoice-products> 
-            </mat-tab>
+        <mat-tab label="Invoice-Products">
+          <app-invoice-products [invoiceProducts]="invoice.invoiceProducts"> </app-invoice-products>
+        </mat-tab>
 
         <mat-tab label="Dates">
           <table style="width:240px; text-align: left">
+            <tr>
+              <th>Invoices action</th>
+              <th>Date</th>
+            </tr>
             <tr *ngIf='invoice.dateCustomerViewedInvoice'>
               <td>
                 Customer viewed
@@ -131,8 +135,12 @@
           </table>
         </mat-tab>
 
-        <mat-tab label="Costs">
-          <table style="width:200px; text-align: right">
+        <mat-tab label="Total costs">
+          <table class="total-cost" style="width:200px; text-align: right">
+            <tr>
+              <th>Item</th>
+              <th>Amount</th>
+            </tr>
             <tr *ngIf='invoice.deliveryPayment'>
               <td>Delivery</td>
               <td>{{invoice.deliveryPayment|currency}}</td>
@@ -161,8 +169,8 @@
               <td>Miscellaneous</td>
               <td>{{invoice.totalMisc|currency}}</td>
             </tr>
-            <tr>
-              <td><strong>Total:</strong></td>
+            <tr class="border_top">
+              <td ><strong>Total:</strong></td>
               <td>
                 <strong>
                   {{invoice.deliveryPayment 
