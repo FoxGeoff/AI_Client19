@@ -39,7 +39,7 @@ export class SidenavComponent implements OnInit {
       this.invoiceProducts = this.invoiceProductService.invoiceProducts;
       console.log('Finished getting all invoiceProducts from internal store');
   
-      this.invoiceProductService.getAllCustomers();
+      this.invoiceProductService.getAllInvoiceProducts();
       console.log('Finished getting all invoiceProducts from the server');
       
       this.router.events.subscribe(() => {

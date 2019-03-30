@@ -31,10 +31,10 @@ export class InvoiceProductService {
     return this._invoiceProducts.asObservable();
   }
 
-  addCustomer(user: InvoiceProduct): Promise<InvoiceProduct> {
+  addinvoiceProduct(user: InvoiceProduct): Promise<InvoiceProduct> {
     return new Promise((resolve, reject) => {
 
-      this.addCustomerDb(user)
+      this.addinvoiceProductrDb(user)
         .subscribe(
           (data: InvoiceProduct) => user.id = data.id,
           (err: any) => console.log(err)
@@ -49,18 +49,18 @@ export class InvoiceProductService {
   }
 
   //move to: data service
-  addCustomerDb(newCustomer: InvoiceProduct): Observable<InvoiceProduct> {
+  addinvoiceProductrDb(newInvoiceProduct: InvoiceProduct): Observable<InvoiceProduct> {
     const userUrl = 'https://localhost:44334/api/invoiceproducts';
 
-    return this.https.post<InvoiceProduct>(userUrl, newCustomer, {
+    return this.https.post<InvoiceProduct>(userUrl, newInvoiceProduct, {
       headers: new HttpHeaders({
         'Content': 'application/json'
       })
     });
   }
 
-  getAllCustomers(): void {
-    this.getAllCustomersDb().subscribe(
+  getAllInvoiceProducts(): void {
+    this.getAllInvoiceProductsDb().subscribe(
       (data: InvoiceProduct[]) => {
         console.log(data);
         this.dataStore.invoiceProducts = data;
@@ -69,15 +69,15 @@ export class InvoiceProductService {
         this._invoiceProducts.next(Object.assign({}, this.dataStore).invoiceProducts);
       },
       (err: InvoiceProductTrackerError) => console.log(err.friendlyMessage),
-      () => console.log('Finished getting customer data from server:: LoadAll()')
+      () => console.log('Finished getting invoice-products data from server:: getAllInvoiceProducts()')
     );
     this._invoiceProducts.next(Object.assign({}, this.dataStore).invoiceProducts);
   }
   //move to: data service
-  getAllCustomersDb(): Observable<InvoiceProduct[] | InvoiceProductTrackerError> {
+  getAllInvoiceProductsDb(): Observable<InvoiceProduct[] | InvoiceProductTrackerError> {
     const userUrl = 'https://localhost:44334/api/invoiceproducts ';
 
-    console.log('Finished getting customer data from server:: getAllCustomers()');
+    console.log('Finished getting invoice-products data from server:: getAllInvoiceProductsDb()');
     // Test: '/api/error/500'
     return this.https.get<InvoiceProduct[]>(userUrl)
       .pipe(
@@ -85,12 +85,12 @@ export class InvoiceProductService {
       );
   }
 
-  updateCustomer(customer: InvoiceProduct): void {
+  updateInvoiceProduct(invoiceProduct: InvoiceProduct): void {
     // update database and remove from internal store
-    this.updateCustomerDb(customer)
+    this.updateInvoiceProductByIdDb(invoiceProduct)
       .subscribe(
         (data: void) => {
-          console.log(`${customer.productDescription} updated database successfully`);
+          console.log(`${invoiceProduct.productDescription} updated database successfully`);
           // pull from internal data store
           /*
           let arr: Customer[] = this.dataStore.customers;
@@ -103,7 +103,7 @@ export class InvoiceProductService {
         (err: any) => console.log(err)
       );
     // retrieve from database and add to internal store
-    this.getCustomerById(customer.id)
+    this.getInvoiceProductByIdDb(invoiceProduct.id)
       .subscribe(
         (data: InvoiceProduct) => {
           console.log(`${data.productDescription} retrieved from database successfully`);
@@ -117,10 +117,10 @@ export class InvoiceProductService {
   }
 
   //move to: data service
-  getCustomerById(id: number): Observable<InvoiceProduct> {
+  getInvoiceProductByIdDb(id: number): Observable<InvoiceProduct> {
     const userUrl = `https://localhost:44334/api/invoiceproducts/${id}`;
 
-    console.log('Getting customer from the server id: ' + id);
+    console.log('Getting Invoice-Product from the server id: ' + id);
     return this.https.get<InvoiceProduct>(userUrl, {
       headers: new HttpHeaders({
         'Accept': 'application/json',
@@ -130,7 +130,7 @@ export class InvoiceProductService {
   }
 
   //move to: data service
-  updateCustomerDb(updatedCustomer: InvoiceProduct): Observable<void> {
+  updateInvoiceProductByIdDb(updatedCustomer: InvoiceProduct): Observable<void> {
     const userUrl = `https://localhost:44334/api/invoiceproducts/${updatedCustomer.id}`;
 
     return this.https.put<void>(userUrl, updatedCustomer, {
@@ -140,28 +140,28 @@ export class InvoiceProductService {
     });
   }
 
-  deleteOne(customer: InvoiceProduct): Promise<InvoiceProduct> {
+  deleteOne(invoiceProduct: InvoiceProduct): Promise<InvoiceProduct> {
 
     return new Promise((resolve, reject) => {
-      this.deleteCustomerDb(customer.id).subscribe(
+      this.deleteInvoiceProductDb(invoiceProduct.id).subscribe(
         null,
         (err: any) => console.log(err)
       )
       // pull from internal data store
       let arr: InvoiceProduct[] = this.dataStore.invoiceProducts;
-      let value = arr.find(cust => cust.id === customer.id);
+      let value = arr.find(InvoiceProd => InvoiceProd.id === invoiceProduct.id);
       this.dataStore.invoiceProducts = arr.filter(item => item !== value)
 
       // Copy data obj to isolate the data from manipulation
       // and expose this data
       this._invoiceProducts.next(Object.assign({}, this.dataStore).invoiceProducts);
 
-      resolve(customer);
+      resolve(invoiceProduct);
     });
   }
 
   //move to: data service
-  deleteCustomerDb(id: number): Observable<void> {
+  deleteInvoiceProductDb(id: number): Observable<void> {
     const userUrl = 'https://localhost:44334/api/invoiceproducts';
 
     return this.https.delete<void>(`userUrl/${id}`);
@@ -172,12 +172,12 @@ export class InvoiceProductService {
     let dataError = new InvoiceProductTrackerError();
     dataError.errorNumber = 100;
     dataError.message = error.statusText;
-    dataError.friendlyMessage = 'An error occured retriving customer data.';
+    dataError.friendlyMessage = 'An error occured retriving Invoice-Products data.';
 
     return throwError(dataError);
   }
 
-  customerById(id: number): InvoiceProduct {
+  invoiceProductById(id: number): InvoiceProduct {
     return this.dataStore.invoiceProducts.find(x => x.id == id);
   }
 }
