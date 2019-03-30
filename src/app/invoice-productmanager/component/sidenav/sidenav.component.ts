@@ -5,6 +5,8 @@ import { InvoiceProduct } from '../../models/InvoiceProduct';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Router } from '@angular/router';
 import { InvoiceProductService } from '../../services/invoice-product.service';
+import { InvoiceService } from 'src/app/invoicemanager/services/invoice.service';
+import { CustomerService } from 'src/app/customermanager/services/customer.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -20,6 +22,8 @@ export class SidenavComponent implements OnInit {
   constructor(
     private breakpointObserver: BreakpointObserver, 
     private invoiceProductService: InvoiceProductService, 
+    private invoiceService: InvoiceService,
+    private customerService: CustomerService,
     private router: Router) { }
 
   ngOnInit() {
@@ -38,9 +42,12 @@ export class SidenavComponent implements OnInit {
 
       this.invoiceProducts = this.invoiceProductService.invoiceProducts;
       console.log('Finished getting all invoiceProducts from internal store');
-  
       this.invoiceProductService.getAllInvoiceProducts();
       console.log('Finished getting all invoiceProducts from the server');
+      //
+      this.invoiceService.getAllInvoices();
+      //
+      this.customerService.getAllCustomers();
       
       this.router.events.subscribe(() => {
         if (this.smallWidthBreakpoint) {

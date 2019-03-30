@@ -36,9 +36,11 @@ export class MainContentComponent implements OnInit {
           if (invoiceProds.length == 0) return;
   
           setTimeout(() => {
-            //from local storeget invoice
+            //from local storeget invoice-product
             this.invoiceProduct = this.service.invoiceProductById(this.id);
             this.invoiceProductPrameterService.detailedInvoiceProduct = this.invoiceProduct;
+            //from local store get invoice
+            this.invoice = this.invoiceService.invoiceById(this.invoiceProduct.associatedInvoiceId);
             //from local store get customer
             this.customer = this.customerService.customerById(this.invoice.associatedCustomerId);
            }, 500);

@@ -9,7 +9,7 @@
   </mat-list-item>
 </mat-list>
 
-<div *ngIf='invoice'>
+<div *ngIf='invoiceProduct'>
   <mat-card>
     <mat-card-title *ngIf='customer'>
       <button mat-icon-button matTooltip="Details {{customer.id}}" [routerLink]="['/customermanager',customer.id]">
@@ -18,7 +18,28 @@
       <mat-icon>people</mat-icon> {{customer.username}}
     </mat-card-title>
     <mat-card-subtitle>
-      
+      <strong>Invoice: </strong>{{invoice.id}}
+      <strong>Description: </strong>{{invoice.invoiceDescription}}
+      <p><strong>Deposit required: </strong> {{invoice.isNoDepositNeeded == 1? 'Yes' : 'No'}}</p>
+      <p><strong>Confimed: </strong> {{invoice.isConfirmed == 1? 'Yes' : 'No'}}</p>
+      <p>
+        <strong>Status: </strong>
+        <span *ngIf='invoice.associatedStatusId == 4'>Lost</span>
+        <span *ngIf='invoice.associatedStatusId == 7'>Paid In Full</span>
+      </p>
+      <p><strong>Invoice Products:</strong></p>
     </mat-card-subtitle>
+    <mat-card-content>
+      <mat-tab-group>
+        <mat-tab label="{{invoice.id}} {{invoiceProduct.aiPartNumber}}">
+          <p><strong>AI part: </strong>{{invoiceProduct.product.aiPartNumber}}</p>
+          <p><strong>Description: </strong>{{invoiceProduct.product.productDescription}}</p>
+          <!--
+          <app-product [Product]="invoiceProduct.product"> </app-product>
+          -->
+        </mat-tab>
+
+      </mat-tab-group>
+    </mat-card-content>
   </mat-card>
 </div>
