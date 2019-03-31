@@ -27,16 +27,37 @@
         <span *ngIf='invoice.associatedStatusId == 4'>Lost</span>
         <span *ngIf='invoice.associatedStatusId == 7'>Paid In Full</span>
       </p>
-      <p><strong>Invoice Products:</strong></p>
+      <p><strong>Invoice-Product: </strong>{{invoice.id}} {{invoiceProduct.aiPartNumber}}</p>
     </mat-card-subtitle>
     <mat-card-content>
       <mat-tab-group>
-        <mat-tab label="{{invoice.id}} {{invoiceProduct.aiPartNumber}}">
-          <p><strong>AI part: </strong>{{invoiceProduct.product.aiPartNumber}}</p>
+        <mat-tab label="Product">
+          <p><strong>AI no: </strong>{{invoiceProduct.product.aiPartNumber}}</p>
           <p><strong>Description: </strong>{{invoiceProduct.product.productDescription}}</p>
+          <p><strong>Manufacture No: </strong>{{invoiceProduct.product.manufactureNumber}}</p>
+          <p><strong>Manufacture: </strong>{{invoiceProduct.product.manufactureName}}</p>
+          <p><strong>Manufacture Url: </strong>{{invoiceProduct.product.mfgUrl}}</p>
+          <p><strong>Manufacture Instrutions Url: </strong>{{invoiceProduct.product.mfgManualUrl}}</p>
+          <p><strong>Retail: </strong>{{invoiceProduct.product.retail | currency}}</p>
+          <p><strong>Cost: </strong>{{invoiceProduct.product.cost | currency}}</p>
+          <!--
+          <p><strong>Image: </strong>{{product.productImage.id}}</p>
+          -->
           <!--
           <app-product [Product]="invoiceProduct.product"> </app-product>
           -->
+        </mat-tab>
+        <mat-tab label="Invoice-Product">
+          <p><strong>AI no: </strong>{{invoiceProduct.aiPartNumber}}</p>
+          <p><strong>Description: </strong>{{invoiceProduct.productDescription}}</p>
+          <p><strong>Sell Price: </strong>{{invoiceProduct.sellPrice | currency}}</p>
+          <p><strong>Cost: </strong>{{invoiceProduct.cost | currency}}</p>
+          <p><strong>Cost additional: </strong>{{invoiceProduct.additionalCost | currency}}</p>
+          <p><strong>Cost new: </strong>{{invoiceProduct.newCost | currency}}</p>
+          <p><strong>Quantity: </strong>{{invoiceProduct.qty}}</p>
+          <p><strong>Priority: </strong>{{invoiceProduct.priority}}</p>
+          <p><strong>Revision: </strong>{{invoiceProduct.dateAdded}}</p>
+
         </mat-tab>
 
       </mat-tab-group>
