@@ -11,62 +11,87 @@
 
 <div *ngIf='invoiceProduct'>
   <mat-card>
+
     <mat-card-title *ngIf='customer'>
       <button mat-icon-button matTooltip="Details {{customer.id}}" [routerLink]="['/customermanager',customer.id]">
         <mat-icon>infomation</mat-icon>
       </button>
       <mat-icon>people</mat-icon> {{customer.username}}
     </mat-card-title>
+
     <mat-card-subtitle>
-      <strong>Invoice: </strong>{{invoice.id}}
-      <strong>Description: </strong>{{invoice.invoiceDescription}}
-      <p><strong>Deposit required: </strong> {{invoice.isNoDepositNeeded == 1? 'Yes' : 'No'}}</p>
-      <p><strong>Confimed: </strong> {{invoice.isConfirmed == 1? 'Yes' : 'No'}}</p>
-      <p>
-        <strong>Status: </strong>
-        <span *ngIf='invoice.associatedStatusId == 4'>Lost</span>
-        <span *ngIf='invoice.associatedStatusId == 7'>Paid In Full</span>
-      </p>
 
       <mat-list>
         <mat-list-item>
-          <strong>Invoice-Product:</strong>{{invoice.id}} {{invoiceProduct.aiPartNumber}}
+          <h3 matLine>
+            <mat-icon>account_balance</mat-icon> Invoice: {{invoice.id}}
+          </h3>
+          <p matLine><br></p>
+          <p matLine><strong> Description: </strong>{{invoice.invoiceDescription}}</p>
+          <p matLine><strong>Deposit required: </strong> {{invoice.isNoDepositNeeded == 1? 'Yes' : 'No'}} </p>
+          <p matLine><strong>Confimed: </strong> {{invoice.isConfirmed == 1? 'Yes' : 'No'}} </p>
+
+          <p matLine><strong>Status: </strong>
+            <span *ngIf='invoice.associatedStatusId == 4'>Lost</span>
+            <span *ngIf='invoice.associatedStatusId == 7'>Paid In Full</span>
+          </p>
         </mat-list-item>
+
         <mat-list-item>
-          <strong>Product:</strong>{{invoiceProduct.product.aiPartNumber}}
+          <h3 matLine>
+            <mat-icon>shop</mat-icon> Invoice-Product: {{invoice.id}} {{invoiceProduct.aiPartNumber}}
+          </h3>
+        </mat-list-item>
+
+        <mat-list-item>
+          <h3 matLine>
+              <mat-icon>local_mall</mat-icon> Product: {{invoiceProduct.product.aiPartNumber}}
+          </h3>
         </mat-list-item>
       </mat-list>
 
     </mat-card-subtitle>
     <mat-card-content>
       <mat-tab-group>
-        <mat-tab label="Product">
-          <p><strong>AI no: </strong>{{invoiceProduct.product.aiPartNumber}}</p>
-          <p><strong>Description: </strong>{{invoiceProduct.product.productDescription}}</p>
-          <p><strong>Manufacture No: </strong>{{invoiceProduct.product.manufactureNumber}}</p>
-          <p><strong>Manufacture: </strong>{{invoiceProduct.product.manufactureName}}</p>
-          <p><strong>Manufacture Url: </strong>{{invoiceProduct.product.mfgUrl}}</p>
-          <p><strong>Manufacture Instrutions Url: </strong>{{invoiceProduct.product.mfgManualUrl}}</p>
-          <p><strong>Retail: </strong>{{invoiceProduct.product.retail | currency}}</p>
-          <p><strong>Cost: </strong>{{invoiceProduct.product.cost | currency}}</p>
-          <!--
-          <p><strong>Image: </strong>{{product.productImage.id}}</p>
-          -->
-          <!--
-          <app-product [Product]="invoiceProduct.product"> </app-product>
-          -->
-        </mat-tab>
-        <mat-tab label="Invoice-Product">
-          <p><strong>AI no: </strong>{{invoiceProduct.aiPartNumber}}</p>
-          <p><strong>Description: </strong>{{invoiceProduct.productDescription}}</p>
-          <p><strong>Sell Price: </strong>{{invoiceProduct.sellPrice | currency}}</p>
-          <p><strong>Cost: </strong>{{invoiceProduct.cost | currency}}</p>
-          <p><strong>Cost additional: </strong>{{invoiceProduct.additionalCost | currency}}</p>
-          <p><strong>Cost new: </strong>{{invoiceProduct.newCost | currency}}</p>
-          <p><strong>Quantity: </strong>{{invoiceProduct.qty}}</p>
-          <p><strong>Priority: </strong>{{invoiceProduct.priority}}</p>
-          <p><strong>Revision: </strong>{{invoiceProduct.dateAdded}}</p>
 
+        <mat-tab label="Invoice-Product">
+          <mat-list>
+            <mat-list-item>
+              <p matLine><strong>AI no: </strong>{{invoiceProduct.aiPartNumber}}</p>
+              <p matLine><strong>Description: </strong>{{invoiceProduct.productDescription}}</p>
+              <p matLine><strong>Sell Price: </strong>{{invoiceProduct.sellPrice | currency}}</p>
+              <p matLine><strong>Cost: </strong>{{invoiceProduct.cost | currency}}</p>
+              <p matLine><strong>Cost additional: </strong>{{invoiceProduct.additionalCost | currency}}</p>
+              <p matLine><strong>Cost new: </strong>{{invoiceProduct.newCost | currency}}</p>
+              <p matLine><strong>Quantity: </strong>{{invoiceProduct.qty}}</p>
+              <p matLine><strong>Priority: </strong>{{invoiceProduct.priority}}</p>
+              <p matLine><strong>Revision: </strong>{{invoiceProduct.dateAdded | date}}</p>
+            </mat-list-item>
+          </mat-list>
+          <p><br></p>
+        </mat-tab>
+
+        <mat-tab label="Product">
+
+          <mat-list>
+            <mat-list-item>
+              <p matLine><strong>AI no: </strong>{{invoiceProduct.product.aiPartNumber}}</p>
+              <p matLine><strong>Description: </strong>{{invoiceProduct.product.productDescription}}</p>
+              <p matLine><strong>Manufacture No: </strong>{{invoiceProduct.product.manufactureNumber}}</p>
+              <p matLine><strong>Manufacture: </strong>{{invoiceProduct.product.manufactureName}}</p>
+              <p matLine><strong>Manufacture Url: </strong>{{invoiceProduct.product.mfgUrl}}</p>
+              <p matLine><strong>Manufacture Instrutions Url: </strong>{{invoiceProduct.product.mfgManualUrl}}</p>
+              <p matLine><strong>Retail: </strong>{{invoiceProduct.product.retail | currency}}</p>
+              <p matLine><strong>Cost: </strong>{{invoiceProduct.product.cost | currency}}</p>
+              <!--
+                <p matLine><strong>Image: </strong>{{product.productImage.id}}</p>
+                -->
+              <!--
+                <app-product [Product]="invoiceProduct.product"> </app-product>
+                -->
+            </mat-list-item>
+          </mat-list>
+          <p><br></p>
         </mat-tab>
 
       </mat-tab-group>
