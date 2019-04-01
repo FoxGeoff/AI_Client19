@@ -1,4 +1,8 @@
 /* Structure */
+.card-container {
+  margin-top: -80px;
+}
+
 button .mat-icon {
     color:blue;
     margin-bottom: 5px;

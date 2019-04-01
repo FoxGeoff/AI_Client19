@@ -10,7 +10,7 @@
 </mat-list>
 
 <div *ngIf='invoice'>
-  <mat-card>
+  <mat-card class="card-container">
     <mat-card-header>
       <mat-card-title *ngIf='customer'>
         <button mat-icon-button matTooltip="Details {{customer.id}}" [routerLink]="['/customermanager',customer.id]">
