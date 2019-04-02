@@ -13,28 +13,27 @@
   <mat-card class="card-container">
 
     <mat-card-title *ngIf='customer'>
-      <button mat-icon-button matTooltip="Details {{customer.id}}" [routerLink]="['/customermanager',customer.id]">
-        <mat-icon>people</mat-icon>
-      </button>
-      {{customer.username}}
+      Invoice-Product details
+      <mat-nav-list>
+        <a mat-list-item href="/customermanager/{{customer.id}}" matTooltip="Details {{customer.id}}">
+          <mat-icon>people</mat-icon>{{customer.username}}
+        </a>
+      </mat-nav-list>
     </mat-card-title>
 
     <mat-card-subtitle>
 
+      <mat-nav-list>
+        <a mat-list-item href="/invoicemanager/{{invoice.id}}" matTooltip="Details {{invoice.id}}">
+          <mat-icon>account_balance</mat-icon>Invoice: {{invoice.id}}
+        </a>
+      </mat-nav-list>
+
       <mat-list>
         <mat-list-item>
-          <h3 matLine>
-            <button mat-icon-button matTooltip="Details {{invoice.id}}"
-              [routerLink]="['/invoicemanager',invoice.id]">
-              <mat-icon>account_balance</mat-icon> 
-            </button>
-            Invoice: {{invoice.id}}
-          </h3>
-          <p matLine><br></p>
           <p matLine><strong> Description: </strong>{{invoice.invoiceDescription}}</p>
           <p matLine><strong>Deposit required: </strong> {{invoice.isNoDepositNeeded == 1? 'Yes' : 'No'}} </p>
           <p matLine><strong>Confimed: </strong> {{invoice.isConfirmed == 1? 'Yes' : 'No'}} </p>
-
           <p matLine><strong>Status: </strong>
             <span *ngIf='invoice.associatedStatusId == 4'>Lost</span>
             <span *ngIf='invoice.associatedStatusId == 7'>Paid In Full</span>
@@ -42,23 +41,19 @@
         </mat-list-item>
 
         <mat-list-item>
-          <h3 matLine>
-            <mat-icon>shop</mat-icon>Invoice-Product: {{invoice.id}} {{invoiceProduct.aiPartNumber}} <strong>{{invoiceProduct.room}}</strong>
-          </h3>
+          <mat-icon>shop</mat-icon>Invoice-Product: {{invoice.id}} {{invoiceProduct.aiPartNumber}} Room:{{invoiceProduct.room}}
         </mat-list-item>
 
-        <mat-list-item>
-          <h3 matLine>
-            <button mat-icon-button matTooltip="Details {{invoiceProduct.product.id}}"
-              [routerLink]="['/productmanager',invoiceProduct.product.id]">
-              <mat-icon>local_mall</mat-icon>
-            </button>
-            Product: {{invoiceProduct.product.aiPartNumber}}
-          </h3>
-        </mat-list-item>
       </mat-list>
 
+      <mat-nav-list>
+        <a mat-list-item href="/productmanager/{{invoiceProduct.product.id}}"
+          matTooltip="Details {{invoiceProduct.product.id}}">
+          <mat-icon>local_mall</mat-icon>Product: {{invoiceProduct.product.aiPartNumber}}
+        </a>
+      </mat-nav-list>
     </mat-card-subtitle>
+
     <mat-card-content>
       <mat-tab-group>
 
@@ -80,7 +75,6 @@
         </mat-tab>
 
         <mat-tab label="Product">
-
           <mat-list>
             <mat-list-item>
               <p matLine><strong>AI no: </strong>{{invoiceProduct.product.aiPartNumber}}</p>
