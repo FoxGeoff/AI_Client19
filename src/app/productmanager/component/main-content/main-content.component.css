@@ -1,0 +1,13 @@
+/* Structure */
+.card-container {
+    margin-top: -80px;
+  }
+  
+  button .mat-icon {
+      color:blue;
+      margin-bottom: 5px;
+  }
+  
+   tr.border_top td{
+      border-top: 1px solid black;
+    }

@@ -1,3 +1,40 @@
-<p>
-  main-content works!
-</p>
+<mat-list>
+  <mat-list-item>
+    <div *ngIf='!product'>
+      <button mat-button color="accent"> {{id? 'Working...': 'Select an invoice-product from the list'}}</button>
+    </div>
+    <div *ngIf='id && !product'>
+      <mat-spinner [diameter]="30"></mat-spinner>
+    </div>
+  </mat-list-item>
+</mat-list>
+
+<div *ngIf='product'>
+  <mat-card class="card-container">
+
+    <mat-card-title *ngIf='customer'>
+      <button mat-icon-button matTooltip="Details {{customer.id}}" [routerLink]="['/customermanager',customer.id]">
+        <mat-icon>infomation</mat-icon>
+      </button>
+      <mat-icon>people</mat-icon> {{customer.username}}
+    </mat-card-title>
+
+    <mat-card-subtitle>
+
+      <mat-list>
+        <mat-list-item>
+          <h3 matLine>
+            <mat-icon>local_mall</mat-icon> Product: {{product.aiPartNumber}}
+          </h3>
+          <p matLine><br></p>
+          <p matLine><strong> Description: </strong>{{product.productDescription}}</p>
+          <p matLine><strong>Manufacture No: </strong> {{product.manufactureNumber}} </p>
+          <p matLine><strong>Manufacture: </strong> {{product.manufactureName}} </p>
+
+        </mat-list-item>
+
+      </mat-list>
+
+    </mat-card-subtitle>
+  </mat-card>
+</div>
