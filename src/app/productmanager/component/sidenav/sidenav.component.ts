@@ -36,10 +36,9 @@ export class SidenavComponent implements OnInit {
        }
      });
 
-     this.Products = this.ProductService.invoiceProducts;
+     this.Products = this.ProductService.products;
      console.log('Finished getting all invoiceProducts from internal store');
- 
-     this.ProductService.getAllCustomers();
+     this.ProductService.getAllProducts();
      console.log('Finished getting all invoiceProducts from the server');
      
      this.router.events.subscribe(() => {

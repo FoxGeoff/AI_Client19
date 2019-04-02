@@ -16,7 +16,8 @@ export class MainContentComponent implements OnInit {
   id: number;
   customer: Customer;
 
-  constructor(private route: ActivatedRoute,
+  constructor(
+    private route: ActivatedRoute,
     private service: InvoiceService,
     private invoiceParameterService: InvoiceParameterService,
     private customerService: CustomerService) { }

@@ -34,7 +34,7 @@ export class InvoiceProductService {
   addinvoiceProduct(user: InvoiceProduct): Promise<InvoiceProduct> {
     return new Promise((resolve, reject) => {
 
-      this.addinvoiceProductrDb(user)
+      this.addinvoiceProductDb(user)
         .subscribe(
           (data: InvoiceProduct) => user.id = data.id,
           (err: any) => console.log(err)
@@ -49,7 +49,7 @@ export class InvoiceProductService {
   }
 
   //move to: data service
-  addinvoiceProductrDb(newInvoiceProduct: InvoiceProduct): Observable<InvoiceProduct> {
+  addinvoiceProductDb(newInvoiceProduct: InvoiceProduct): Observable<InvoiceProduct> {
     const userUrl = 'https://localhost:44334/api/invoiceproducts';
 
     return this.https.post<InvoiceProduct>(userUrl, newInvoiceProduct, {

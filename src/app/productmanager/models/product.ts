@@ -9,25 +9,25 @@ export class Product {
     associatedRecycleId: number; //nullable 
     merchantNumber: string;
     productDescription: string;
-    aiPartNumber: string; 
-    manufactur eNumber: string; 
-    manufactureName: string; 
-    mfgUrl: string; 
-    mfgManualUrl: string; 
+    aiPartNumber: string;
+    manufacture: string;
+    manufactureName: string;
+    mfgUrl: string;
+    mfgManualUrl: string;
     associatedPrimaryVendorId: number; //nullable 
     associatedSecondaryVendorId: number; //nullable 
     associatedTertiaryVendorId: number; //nullable  
     retail: number; //nullable 
     cost: number; //nullable  
-    additionalCost:boolean;  
+    additionalCost: boolean;
     defaultPriority: number; //nulable 
-    isTaxable: boolean; 
-    isRecycleFee: boolean; 
-    itemsAssociated: string; 
-    isExcludedDesAinumOverrwrite: boolean; 
-    costVerificationDate: Date; 
-    costVerificationBy: number; 
-    associatedFavoriteIds: string; 
-    aliases: string; 
-    isShownOnPickSheet: boolean; 
+    isTaxable: boolean;
+    isRecycleFee: boolean;
+    itemsAssociated: string;
+    isExcludedDesAinumOverrwrite: boolean;
+    costVerificationDate: Date;
+    costVerificationBy: number;
+    associatedFavoriteIds: string;
+    aliases: string;
+    isShownOnPickSheet: boolean;
 }
