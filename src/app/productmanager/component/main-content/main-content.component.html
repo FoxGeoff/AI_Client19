@@ -10,31 +10,24 @@
 </mat-list>
 
 <div *ngIf='product'>
-  <mat-card class="card-container">
-
-    <mat-card-title *ngIf='customer'>
-      <button mat-icon-button matTooltip="Details {{customer.id}}" [routerLink]="['/customermanager',customer.id]">
-        <mat-icon>infomation</mat-icon>
-      </button>
-      <mat-icon>people</mat-icon> {{customer.username}}
-    </mat-card-title>
-
-    <mat-card-subtitle>
-
-      <mat-list>
-        <mat-list-item>
-          <h3 matLine>
-            <mat-icon>local_mall</mat-icon> Product: {{product.aiPartNumber}}
-          </h3>
-          <p matLine><br></p>
-          <p matLine><strong> Description: </strong>{{product.productDescription}}</p>
-          <p matLine><strong>Manufacture No: </strong> {{product.manufactureNumber}} </p>
-          <p matLine><strong>Manufacture: </strong> {{product.manufactureName}} </p>
-
-        </mat-list-item>
-
-      </mat-list>
-
-    </mat-card-subtitle>
+  <mat-card class="mat-card">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon>local_mall</mat-icon> Product: {{product.aiPartNumber}}
+      </mat-card-title>
+      <mat-card-subtitle>
+        <p><strong>Manufacture No: </strong> {{product.manufactureNumber}} </p>
+        <p><strong>Manufacture: </strong> {{product.manufactureName}} </p>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <img matLine mat-card-image class="mat-card-image" src="data:image/png;base64,{{product.productImage.imageFull}}"
+        alt="Photo of {{product.aiPartNumber}}">
+      <p>{{product.productDescription}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
   </mat-card>
 </div>

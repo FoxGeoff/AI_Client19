@@ -1,5 +1,5 @@
 /* Structure */
-.card-container {
+.mat-card {
     margin-top: -80px;
   }
   
@@ -8,6 +8,15 @@
       margin-bottom: 5px;
   }
   
-   tr.border_top td{
+  tr.border_top td {
       border-top: 1px solid black;
+    }
+
+  .mat-card-image {
+      width: 200px;
+      margin-left:10px;
+    }
+
+  .header-image {
+      width:30px;
     }
