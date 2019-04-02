@@ -5,8 +5,10 @@
 
 button .mat-icon {
     color:blue;
-    margin-bottom: 5px;
+    margin-top: -20px;
+    margin-right: -20px; 
 }
+
 
  tr.border_top td{
     border-top: 1px solid black;

@@ -14,9 +14,9 @@
 
     <mat-card-title *ngIf='customer'>
       <button mat-icon-button matTooltip="Details {{customer.id}}" [routerLink]="['/customermanager',customer.id]">
-        <mat-icon>infomation</mat-icon>
+        <mat-icon>people</mat-icon>
       </button>
-      <mat-icon>people</mat-icon> {{customer.username}}
+      {{customer.username}}
     </mat-card-title>
 
     <mat-card-subtitle>
@@ -24,7 +24,11 @@
       <mat-list>
         <mat-list-item>
           <h3 matLine>
-            <mat-icon>account_balance</mat-icon> Invoice: {{invoice.id}}
+            <button mat-icon-button matTooltip="Details {{invoice.id}}"
+              [routerLink]="['/invoicemanager',invoice.id]">
+              <mat-icon>account_balance</mat-icon> 
+            </button>
+            Invoice: {{invoice.id}}
           </h3>
           <p matLine><br></p>
           <p matLine><strong> Description: </strong>{{invoice.invoiceDescription}}</p>
@@ -39,13 +43,17 @@
 
         <mat-list-item>
           <h3 matLine>
-            <mat-icon>shop</mat-icon> Invoice-Product: {{invoice.id}} {{invoiceProduct.aiPartNumber}}
+            <mat-icon>shop</mat-icon>Invoice-Product: {{invoice.id}} {{invoiceProduct.aiPartNumber}} <strong>{{invoiceProduct.room}}</strong>
           </h3>
         </mat-list-item>
 
         <mat-list-item>
           <h3 matLine>
-              <mat-icon>local_mall</mat-icon> Product: {{invoiceProduct.product.aiPartNumber}}
+            <button mat-icon-button matTooltip="Details {{invoiceProduct.product.id}}"
+              [routerLink]="['/productmanager',invoiceProduct.product.id]">
+              <mat-icon>local_mall</mat-icon>
+            </button>
+            Product: {{invoiceProduct.product.aiPartNumber}}
           </h3>
         </mat-list-item>
       </mat-list>
