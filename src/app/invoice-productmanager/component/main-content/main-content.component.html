@@ -41,7 +41,10 @@
         </mat-list-item>
 
         <mat-list-item>
-          <mat-icon>shop</mat-icon>Invoice-Product: {{invoice.id}} {{invoiceProduct.aiPartNumber}} Room:{{invoiceProduct.room}}
+          <mat-icon>shop</mat-icon>Invoice-Product: {{invoice.id}} {{invoiceProduct.aiPartNumber}} 
+          <mat-chip-list>
+            <mat-chip color="accent" selected>{{invoiceProduct.room}}</mat-chip>
+          </mat-chip-list>
         </mat-list-item>
 
       </mat-list>
