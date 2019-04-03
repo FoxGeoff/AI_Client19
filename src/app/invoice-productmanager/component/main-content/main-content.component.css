@@ -10,7 +10,7 @@ button .mat-icon {
 }
 
 a.mat-list-item {
-  width: 230px;
+  max-width: 300px;
 }
 
 a .mat-icon {

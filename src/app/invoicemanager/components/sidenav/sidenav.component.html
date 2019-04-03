@@ -4,7 +4,7 @@
  
     <mat-toolbar color="primary">Invoices</mat-toolbar>
  
-    <mat-nav-list>
+    <mat-nav-list dense>
       <mat-list-item *ngFor="let invoice of invoices | async">
         <a matLine [routerLink]="['/invoicemanager', invoice.id]">
           <mat-icon>account_balance</mat-icon> {{invoice.invoiceDescription}}

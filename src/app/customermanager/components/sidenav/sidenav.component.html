@@ -3,7 +3,7 @@
 
     <mat-toolbar color="primary">Customers</mat-toolbar>
  
-      <mat-nav-list>
+      <mat-nav-list dense>
         <mat-list-item *ngFor="let user of customers | async">
           <a matLine [routerLink]="['/customermanager', user.id]">
             <mat-icon>people</mat-icon> {{ user.username }}
