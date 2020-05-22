@@ -35,9 +35,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Check: Install Angular Material
 
 * Run: ```npm install --save @angular/material @angular/cdk```
-* Run: ``` npm install --save @angular/animations```
+* Run: ```npm install --save @angular/animations```
 * Add: to app.module.ts
-```
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 ...
 ...
